@@ -25,24 +25,26 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Ellipse x:Name="Ellipse"
-                         Grid.RowSpan="2"
-                         Width ="32"
-                         Height="32"
-                         Margin="6"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Fill="LightGray"/>
-                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Grid 
+                    Grid.RowSpan="2"
+                    Width ="40"
+                    Height="40"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    >
+                    <Rectangle Fill="LightGray"/>
                     <TextBlock Text="{x:Bind BoughtCount}" 
                                x:Phase="1"  
                                Style="{ThemeResource BaseTextBlockStyle}"
                                Margin="12,6,0,0"/>
-                    <TextBlock Text="{x:Bind Title}" 
-                               x:Phase="1"  
-                               Style="{ThemeResource BaseTextBlockStyle}"
-                               Margin="12,6,0,0"/>
-                </StackPanel>
+                </Grid>
+
+                <TextBlock Grid.Column="1"
+                           Text="{x:Bind Title}" 
+                           x:Phase="1"  
+                           Style="{ThemeResource BaseTextBlockStyle}"
+                           Margin="12,6,0,0"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>

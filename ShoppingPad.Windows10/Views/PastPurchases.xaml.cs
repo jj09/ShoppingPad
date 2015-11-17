@@ -20,9 +20,6 @@ namespace ShoppingPad.Windows10
             ViewModel = new PastPurchasesViewModel();
             PastPurchasesListView.ItemsSource = ViewModel.Items;
 
-            ViewModel.Items.Add(new BoughtItem("item 1"));
-            ViewModel.Items.Add(new BoughtItem("item 2"));
-
             // Developer will want to return to none selection when selected items are zero
             PastPurchasesListView.SelectionChanged += OnSelectionChanged;
 
