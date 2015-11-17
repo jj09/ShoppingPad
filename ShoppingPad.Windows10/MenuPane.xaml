@@ -16,12 +16,17 @@
                             HorizontalAlignment="Stretch" 
                             HorizontalContentAlignment="Left" 
                             Content="Home" 
-                            Click="NavigateToHome" />                
-                <Button Content="List" 
-                            Click="NavigateToList" 
+                            Click="NavigateToHome" />
+                <Button Content="Shopping List" 
+                            Click="NavigateToShoppingList" 
                             Style="{StaticResource HomeButtonStyle}" 
                             HorizontalAlignment="Stretch" 
-                            HorizontalContentAlignment="Left" />                
+                            HorizontalContentAlignment="Left" />
+                <Button Content="Past Purchases" 
+                            Click="NavigateToPastPurchases" 
+                            Style="{StaticResource HomeButtonStyle}" 
+                            HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Left" />
             </StackPanel>
         </SplitView.Pane>
     </SplitView>

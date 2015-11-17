@@ -23,15 +23,20 @@ namespace ShoppingPad.Windows10
         {
             this.InitializeComponent();
         }
-        
-        private void NavigateToList(object sender, RoutedEventArgs e)
-        {
-            ((Frame)Window.Current.Content).Navigate(typeof(ShoppingList));
-        }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
         {
             ((Frame)Window.Current.Content).Navigate(typeof(MainPage));
+        }
+
+        private void NavigateToShoppingList(object sender, RoutedEventArgs e)
+        {
+            ((Frame)Window.Current.Content).Navigate(typeof(ShoppingList));
+        }
+        
+        private void NavigateToPastPurchases(object sender, RoutedEventArgs e)
+        {
+            ((Frame)Window.Current.Content).Navigate(typeof(PastPurchases));
         }
     }
 }
