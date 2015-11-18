@@ -6,6 +6,7 @@ using System.Linq;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ShoppingPad.Windows10.Helpers;
 
 namespace ShoppingPad.Windows10
 {
@@ -17,7 +18,7 @@ namespace ShoppingPad.Windows10
         {
             this.InitializeComponent();
 
-            ViewModel = new PastPurchasesViewModel();
+            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService);
             PastPurchasesListView.ItemsSource = ViewModel.Items;
 
             // Developer will want to return to none selection when selected items are zero

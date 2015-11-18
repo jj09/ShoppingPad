@@ -12,18 +12,5 @@ namespace ShoppingPad.Tests.ViewModels
 {
     public class PastPurchasesViewModelTests
     {
-        [Fact]
-        void Should_Be_Able_To_Add_Item()
-        {
-            // Arrange
-            var vm = new PastPurchasesViewModel();
-            var boughtItem = new BoughtItem("some bought item");
-
-            // Act
-            vm.Add(boughtItem);
-
-            // Assert
-            Assert.Contains<BoughtItem>(vm.Items, x => x == boughtItem);
-        }
     }
 }

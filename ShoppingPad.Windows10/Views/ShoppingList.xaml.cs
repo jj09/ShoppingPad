@@ -6,6 +6,7 @@ using System.Linq;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ShoppingPad.Windows10.Helpers;
 
 namespace ShoppingPad.Windows10
 {
@@ -17,7 +18,7 @@ namespace ShoppingPad.Windows10
         {
             this.InitializeComponent();
 
-            ViewModel = new ShoppingListViewModel();
+            ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService);
             ShoppingListView.ItemsSource = ViewModel.Items;
 
             // Developer will want to return to none selection when selected items are zero
@@ -97,6 +98,8 @@ namespace ShoppingPad.Windows10
             {
                 ViewModel.Add(new Item(title));
             }
+
+            this.NewItem.Text = "";
         }
 
         private void RemoveItem(object sender, RoutedEventArgs e)

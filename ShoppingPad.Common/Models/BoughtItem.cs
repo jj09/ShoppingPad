@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ShoppingPad.Common.Models
 {
-    public class BoughtItem
+    public class BoughtItem : Item
     {
-        public string Title { get; set; }
         public int BoughtCount { get; set; }
 
-        public BoughtItem(string title)
+        public BoughtItem(string title) : base(title)
         {
-            this.Title = title;
             this.BoughtCount = 1;
         }
     }

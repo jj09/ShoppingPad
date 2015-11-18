@@ -5,21 +5,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShoppingPad.Common.Interfaces;
 
 namespace ShoppingPad.Common.ViewModels
 {
     public class PastPurchasesViewModel
     {
-        public ObservableCollection<BoughtItem> Items;
+        public ObservableCollection<BoughtItem> Items => this._shoppingService.BoughtItems;
 
-        public PastPurchasesViewModel()
-        {
-            Items = new ObservableCollection<BoughtItem>();
-        }
+        private readonly IShoppingService _shoppingService;
 
-        public void Add(BoughtItem boughtItem)
+
+        public PastPurchasesViewModel(IShoppingService shoppingService)
         {
-            Items.Add(boughtItem);
+            this._shoppingService = shoppingService;
         }
     }
 }
