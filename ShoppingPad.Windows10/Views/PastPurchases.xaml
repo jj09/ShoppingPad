@@ -22,16 +22,18 @@
         <DataTemplate x:Name="PastPurchasesViewTemplate" x:DataType="data:BoughtItem">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
                 <Grid 
+                    Grid.Column="0"
                     Grid.RowSpan="2"
                     Width ="40"
                     Height="40"
                     Margin="2"
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Left"
                     >
                     <Rectangle Fill="LightGray"/>
                     <TextBlock Text="{x:Bind BoughtCount}" 
@@ -45,6 +47,14 @@
                            x:Phase="1"  
                            Style="{ThemeResource BaseTextBlockStyle}"
                            Margin="12,6,0,0"/>
+                
+                <Button Grid.Column="2"
+                        x:Name="AddItem"
+                        Content="Add to list"
+                        Click="AddItem_Click"
+                        Tag="{x:Bind Title}" 
+                        HorizontalAlignment="Right"
+                        />
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -66,7 +76,9 @@
         <TextBlock Text="Past Purchases"
                        VerticalAlignment="Center"
                        Style="{ThemeResource TitleTextBlockStyle}" 
-                       Grid.Column="1"/>
+                       Grid.Column="1"
+                        Grid.Row="0" 
+                   />
         <!--#endregion-->
         
         <local:EdgeTappedListView x:Name="PastPurchasesListView"
@@ -74,6 +86,7 @@
                                   SelectionMode="None"
                                   Grid.Row="2"
                                   Grid.ColumnSpan="2"
+                                  Grid.Column="0"
                                   ItemTemplate="{StaticResource PastPurchasesViewTemplate}">
         </local:EdgeTappedListView>
 

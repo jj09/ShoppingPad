@@ -82,5 +82,34 @@ namespace ShoppingPad.Tests.Services
             Assert.Equal(expected, shoppingService.BoughtItems);
         }
 
+        [Fact]
+        public void TryAdd_Adds_Item_Only_If_Not_Present_On_List()
+        {
+            // Arrange
+            var item1 = "item 1";
+            var shoppingService = new ShoppingService();
+            shoppingService.AddItem(new Item(item1));
+
+            // Act
+            shoppingService.TryAddItem(new Item(item1));
+
+            // Assert
+            Assert.Equal(1, shoppingService.Items.Count);
+        }
+
+        [Fact]
+        public void TryAdd_Adds_Item_Like_AddItem_When_Item_Not_Present()
+        {
+            // Arrange
+            var item1 = "item 1";
+            var shoppingService = new ShoppingService();
+
+            // Act
+            shoppingService.TryAddItem(new Item(item1));
+
+            // Assert
+            Assert.Equal(1, shoppingService.Items.Count);
+        }
+
     }
 }

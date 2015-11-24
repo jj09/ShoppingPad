@@ -128,5 +128,12 @@ namespace ShoppingPad.Windows10
         {
             MenuPane.SamplesSplitView.IsPaneOpen = !MenuPane.SamplesSplitView.IsPaneOpen;
         }
+
+        private void AddItem_Click(object sender, RoutedEventArgs e)
+        {
+            var title = ((Button) sender).Tag as string;
+
+            ServiceRegistrar.ShoppingService.TryAddItem(new Item(title));
+        }
     }
 }

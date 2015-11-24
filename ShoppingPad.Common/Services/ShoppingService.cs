@@ -33,6 +33,14 @@ namespace ShoppingPad.Common.Services
             this.AddToBoughtItems(item);
         }
 
+        public void TryAddItem(Item item)
+        {
+            if (this.Items.All(x => x.Title != item.Title))
+            {
+                this.Items.Add(item);
+            }
+        }
+
         public void AddToBoughtItems(Item item)
         {
             var boughtItem = this.BoughtItems.FirstOrDefault(x => x.Title == item.Title);
