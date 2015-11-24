@@ -1,8 +1,10 @@
-﻿using ShoppingPad.Common.Models;
+﻿using System;
+using ShoppingPad.Common.Models;
 using ShoppingPad.Common.ViewModels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -96,7 +98,7 @@ namespace ShoppingPad.Windows10
 
             if (!string.IsNullOrEmpty(title))
             {
-                ViewModel.Add(new Item(title));
+                ServiceRegistrar.ShoppingService.TryAddItem(new Item(title));
             }
 
             this.NewItem.Text = "";
@@ -138,6 +140,32 @@ namespace ShoppingPad.Windows10
         private void ShowSliptView(object sender, RoutedEventArgs e)
         {
             MenuPane.SamplesSplitView.IsPaneOpen = !MenuPane.SamplesSplitView.IsPaneOpen;
+        }
+
+        private async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                var text = sender.Text;
+                sender.ItemsSource = sender.Text.Length > 0 ? await Task.Run(() => this.GetSuggestions(text)) : new string[0];
+            }
+        }
+
+        private string[] GetSuggestions(string text)
+        {
+            return
+                ServiceRegistrar.ShoppingService.BoughtItems
+                    .Where(boughtItem => boughtItem.Title.ToLower().Contains(text.ToLower()) 
+                        && ServiceRegistrar.ShoppingService.Items.All(x => !string.Equals(x.Title, boughtItem.Title, StringComparison.CurrentCultureIgnoreCase)))
+                    .Select(x => x.Title)
+                    .ToArray();
+        }
+
+        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            var newItem = new Item(args.SelectedItem as string);
+            ServiceRegistrar.ShoppingService.AddItem(newItem);
+            this.NewItem.Text = "";
         }
     }
 }

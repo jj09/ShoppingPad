@@ -8,6 +8,7 @@ using ShoppingPad.Common.Services;
 
 namespace ShoppingPad.Windows10.Helpers
 {
+    // singleton implementation from Jon Skeet: http://csharpindepth.com/Articles/General/Singleton.aspx
     public sealed class ServiceRegistrar
     {
         private static readonly Lazy<IShoppingService> _shoppingService = 
