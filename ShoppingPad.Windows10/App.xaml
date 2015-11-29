@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="ShoppingPad.Windows10.App"
+    x:Class="ShoppingPad.Common.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ShoppingPad.Windows10"
+    xmlns:local="using:ShoppingPad.Common"
     RequestedTheme="Light">
     <Application.Resources>
         <ResourceDictionary>

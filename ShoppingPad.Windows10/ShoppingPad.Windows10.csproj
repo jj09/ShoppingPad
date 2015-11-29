@@ -96,7 +96,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ServiceRegistrar.cs" />
     <Compile Include="MenuPane.xaml.cs">
       <DependentUpon>MenuPane.xaml</DependentUpon>
     </Compile>

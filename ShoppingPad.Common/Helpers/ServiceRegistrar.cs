@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ShoppingPad.Common.Interfaces;
 using ShoppingPad.Common.Services;
 
-namespace ShoppingPad.Windows10.Helpers
+namespace ShoppingPad.Common.Helpers
 {
     // singleton implementation from Jon Skeet: http://csharpindepth.com/Articles/General/Singleton.aspx
     public sealed class ServiceRegistrar

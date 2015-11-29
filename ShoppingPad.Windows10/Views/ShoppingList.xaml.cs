@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ShoppingPad.Windows10.Helpers;
+using ShoppingPad.Common.Helpers;
 
-namespace ShoppingPad.Windows10
+namespace ShoppingPad.Common
 {
     public sealed partial class ShoppingList : Page
     {

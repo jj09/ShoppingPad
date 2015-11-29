@@ -17,6 +17,7 @@ Requirements:
 
 * v3
 	* sync data with cloud
+		* Mobile Services
 		* requires auth
 
 * v4
