@@ -47,13 +47,7 @@ namespace ShoppingPad.Droid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int ic_action_past_purchases = 2130837504;
-			
-			// aapt resource value: 0x7f020001
-			public const int ic_action_shopping_list = 2130837505;
-			
-			// aapt resource value: 0x7f020002
-			public const int Icon = 2130837506;
+			public const int Icon = 2130837504;
 			
 			static Drawable()
 			{

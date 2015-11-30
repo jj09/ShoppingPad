@@ -44,15 +44,14 @@ namespace ShoppingPad.Droid
                              new PastPurchasesFragment(),
                          };
 
-            AddTabToActionBar(Resource.String.shopping_list_tab_label, Resource.Drawable.ic_action_shopping_list);
-            AddTabToActionBar(Resource.String.past_purchases_tab_label, Resource.Drawable.ic_action_past_purchases);
+            AddTabToActionBar(Resource.String.shopping_list_tab_label);
+            AddTabToActionBar(Resource.String.past_purchases_tab_label);
         }
 
-        void AddTabToActionBar(int labelResourceId, int iconResourceId)
+        void AddTabToActionBar(int labelResourceId)
         {
             var tab = ActionBar.NewTab()
-                                         .SetText(labelResourceId)
-                                         .SetIcon(iconResourceId);
+                                         .SetText(labelResourceId);
             tab.TabSelected += TabOnTabSelected;
             ActionBar.AddTab(tab);
         }
