@@ -29,15 +29,12 @@ namespace ShoppingPad.Droid
             this._inflater = inflater;
             View view = inflater.Inflate(Resource.Layout.ic_tab_shopping_list, null);
             
-            // Create your application here
             ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService);
 
             _shoppingListView = view.FindViewById<ListView>(Resource.Id.ShoppingListView);
 
             var newItemEditText = view.FindViewById<EditText>(Resource.Id.NewItemEditText);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
             Button addItemButton = view.FindViewById<Button>(Resource.Id.AddButton);
 
             _shoppingListView.Adapter = ViewModel.Items.GetAdapter(GetItemView);
@@ -67,7 +64,6 @@ namespace ShoppingPad.Droid
             var view = convertView ?? this._inflater.Inflate(Resource.Layout.RowItem, null);
 
             var title = view.FindViewById<TextView>(Resource.Id.Title);
-
             title.Text = item.Title;
 
             return view;

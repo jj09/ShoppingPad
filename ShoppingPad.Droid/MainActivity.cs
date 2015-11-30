@@ -6,18 +6,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using ShoppingPad.Common.ViewModels;
-using ShoppingPad.Common.Helpers;
 
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using GalaSoft.MvvmLight.Helpers;
-using ShoppingPad.Common.Models;
-
-//using Validation;
 
 namespace ShoppingPad.Droid
 {

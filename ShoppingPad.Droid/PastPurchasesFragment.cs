@@ -27,9 +27,9 @@ namespace ShoppingPad.Droid
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             this._inflater = inflater;
+
             View view = inflater.Inflate(Resource.Layout.ic_tab_past_purchases, null);
             
-            // Create your application here
             ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService);
 
             _pastPurchasesListView = view.FindViewById<ListView>(Resource.Id.PastPurchasesListView);
