@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/NewItemEditText"
+        android:layout_marginRight="0.0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/AddButton" />
+    <Button
+        android:text="Add"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddButton"
+        android:layout_alignParentRight="true" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ShoppingListView"
+        android:layout_marginTop="0.0dp"
+        android:layout_below="@id/AddButton" />
+</RelativeLayout>

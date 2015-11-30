@@ -2,4 +2,6 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">ShoppingPad.Droid</string>
+    <string name="shopping_list_tab_label">Shopping List</string>
+    <string name="past_purchases_tab_label">Past Purchases</string>
 </resources>

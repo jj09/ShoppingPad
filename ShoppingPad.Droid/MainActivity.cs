@@ -24,9 +24,9 @@ namespace ShoppingPad.Droid
     [Activity(Label = "ShoppingPad", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        public ShoppingListViewModel ViewModel { get; set; }
+        static readonly string Tag = "ActionBarTabsSupport";
 
-        private ListView _shoppingListView;
+        private Fragment[] _fragments;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -35,47 +35,34 @@ namespace ShoppingPad.Droid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService);
+            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            SetContentView(Resource.Layout.Main);
 
-            _shoppingListView = FindViewById<ListView>(Resource.Id.ShoppingListView);
+            _fragments = new Fragment[]
+                         {
+                             new ShoppingListFragment(),
+                             new PastPurchasesFragment(),
+                         };
 
-            var newItemEditText = FindViewById<EditText>(Resource.Id.NewItemEditText);
-
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button addItemButton = FindViewById<Button>(Resource.Id.AddButton);
-
-            _shoppingListView.Adapter = ViewModel.Items.GetAdapter(GetItemView);
-
-            addItemButton.Click += delegate
-            {
-                var title = newItemEditText.Text;
-                //ViewModel.Items.Add(new Item(title));
-                if (!string.IsNullOrEmpty(title))
-                {
-                    ServiceRegistrar.ShoppingService.TryAddItem(new Item(title));
-                }
-                newItemEditText.Text = "";
-            };
-
-            _shoppingListView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs e)
-            {
-                //Get our item from the list adapter
-                //var item = this._shoppingListView.Adapter.GetItem(e.Position);
-
-                ViewModel.Remove(this.ViewModel.Items.ElementAt(e.Position));
-            };
+            AddTabToActionBar(Resource.String.shopping_list_tab_label, Resource.Drawable.ic_action_shopping_list);
+            AddTabToActionBar(Resource.String.past_purchases_tab_label, Resource.Drawable.ic_action_past_purchases);
         }
 
-        private View GetItemView(int position, Item item, View convertView)
+        void AddTabToActionBar(int labelResourceId, int iconResourceId)
         {
-            var view = convertView ?? LayoutInflater.Inflate(Resource.Layout.RowItem, null);
+            var tab = ActionBar.NewTab()
+                                         .SetText(labelResourceId)
+                                         .SetIcon(iconResourceId);
+            tab.TabSelected += TabOnTabSelected;
+            ActionBar.AddTab(tab);
+        }
 
-            var title = view.FindViewById<TextView>(Resource.Id.Title);
+        void TabOnTabSelected(object sender, ActionBar.TabEventArgs tabEventArgs)
+        {
+            var tab = (ActionBar.Tab)sender;
 
-            title.Text = item.Title;
-
-            return view;
+            Fragment frag = _fragments[tab.Position];
+            tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
         }
     }
 }
