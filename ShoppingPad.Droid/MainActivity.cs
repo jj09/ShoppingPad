@@ -18,8 +18,6 @@ namespace ShoppingPad.Droid
     [Activity(Label = "ShoppingPad", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        static readonly string Tag = "ActionBarTabsSupport";
-
         private Fragment[] _fragments;
 
         protected override void OnCreate(Bundle bundle)
@@ -59,7 +57,3 @@ namespace ShoppingPad.Droid
         }
     }
 }
-
-
- 
-

@@ -248,3 +248,6 @@ $RECYCLE.BIN/
 #NCrunch
 *.ncrunchsolution
 *.ncrunchproject
+
+#Mac
+*.DS_Store

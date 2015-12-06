@@ -1,12 +1,14 @@
 ﻿using System;
 
 using UIKit;
+using ShoppingPad.Common.Helpers;
+using ShoppingPad.Common.Models;
 
 namespace ShoppingPad.iOS
 {
-	public partial class FirstViewController : UIViewController
+	public partial class AddItemViewController : UIViewController
 	{
-		public FirstViewController (IntPtr handle) : base (handle)
+		public AddItemViewController (IntPtr handle) : base (handle)
 		{
 		}
 
@@ -14,6 +16,11 @@ namespace ShoppingPad.iOS
 		{
 			base.ViewDidLoad ();
 			// Perform any additional setup after loading the view, typically from a nib.
+
+			AddNewItemButton.TouchUpInside += (sender, e) => {
+				var title = NewItemTextField.Text;
+				ServiceRegistrar.ShoppingService.TryAddItem (new Item (title));
+			};
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -23,4 +30,5 @@ namespace ShoppingPad.iOS
 		}
 	}
 }
+
 
