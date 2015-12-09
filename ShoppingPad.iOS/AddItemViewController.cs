@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Foundation;
 using UIKit;
 using ShoppingPad.Common.Helpers;
 using ShoppingPad.Common.Models;
@@ -20,15 +20,10 @@ namespace ShoppingPad.iOS
 			AddNewItemButton.TouchUpInside += (sender, e) => {
 				var title = NewItemTextField.Text;
 				ServiceRegistrar.ShoppingService.TryAddItem (new Item (title));
+                NavigationController.PopToRootViewController(true);
 			};
 		}
-
-		public override void DidReceiveMemoryWarning ()
-		{
-			base.DidReceiveMemoryWarning ();
-			// Release any cached data, images, etc that aren't in use.
-		}
-	}
+    }
 }
 
 

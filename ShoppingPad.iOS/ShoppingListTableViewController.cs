@@ -22,30 +22,28 @@ namespace ShoppingPad.iOS
 			// Perform any additional setup after loading the view, typically from a nib.
 			base.ViewDidLoad ();
 			var table = new UITableView(View.Bounds); // defaults to Plain style
-			table.Source = new TableSource();
-			Add(table);
+			table.Source = new ShoppingListTableSource();
+		    TableView = table;
 		}
 
-		public override void DidReceiveMemoryWarning()
-		{
-			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
-		}
+	    public override void ViewWillAppear(bool animated)
+	    {
+	        base.ViewWillAppear(animated);
+            TableView.ReloadData();
+	    }
 	}
 
-	public class TableSource : UITableViewSource 
+	public class ShoppingListTableSource : UITableViewSource 
 	{
 		ShoppingListViewModel ViewModel;
 		string CellIdentifier = "TableCell";
 
-		public TableSource ()
+		public ShoppingListTableSource ()
 		{
 			ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService);
-			ViewModel.Items.Add (new Item ("item1"));
-			ViewModel.Items.Add (new Item ("item2"));
-		}
+        }
 
-		public override nint RowsInSection (UITableView tableview, nint section)
+        public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return ViewModel.Items.Count;
 		}
@@ -56,8 +54,10 @@ namespace ShoppingPad.iOS
 			var item = ViewModel.Items.ElementAt(indexPath.Row);
 
 			//---- if there are no cells to reuse, create a new one
-			if (cell == null)
-			{ cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier); }
+		    if (cell == null)
+		    {
+		        cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier);
+		    }
 
 			cell.TextLabel.Text = item.Title;
 
