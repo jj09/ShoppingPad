@@ -27,7 +27,7 @@
         </scene>
         <scene sceneID="13">
             <objects>
-                <navigationController definesPresentationContext="YES" id="14" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="14" sceneMemberID="viewController" title="Shopping List">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="17">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
@@ -49,7 +49,7 @@
                         <viewControllerLayoutGuide type="top" id="11"/>
                         <viewControllerLayoutGuide type="bottom" id="12"/>
                     </layoutGuides>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="20">
+                    <navigationItem key="navigationItem" title="Shopping List" id="20">
                         <barButtonItem title="Add" id="55" translatesAutoresizingMaskIntoConstraints="NO" key="rightBarButtonItem">
                             <connections>
                                 <segue id="88" destination="51" kind="show"/>
@@ -101,18 +101,19 @@
                         <viewControllerLayoutGuide type="top" id="48"/>
                         <viewControllerLayoutGuide type="bottom" id="49"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="52">
+                    <view key="view" contentMode="scaleToFill" id="52" layoutMarginsFollowReadableWidth="YES" preservesSuperviewLayoutMargins="YES">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="114" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" preservesSuperviewLayoutMargins="YES">
-                                <rect key="frame" x="0.0" y="123" width="600" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="114" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="20" y="88" width="286" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="115" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" preservesSuperviewLayoutMargins="YES">
-                                <rect key="frame" x="0.0" y="207" width="600" height="30"/>
+                                <rect key="frame" x="20" y="152" width="286" height="30"/>
                                 <state key="normal" title="Add">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -132,7 +133,7 @@
         <scene sceneID="223">
             <objects>
                 <tableViewController id="224" sceneMemberID="viewController" customClass="PastPurchasesTableViewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="225">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="225" showsSelectionImmediatelyOnTouchBegin="NO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
