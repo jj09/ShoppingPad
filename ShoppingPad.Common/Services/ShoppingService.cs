@@ -23,7 +23,7 @@ namespace ShoppingPad.Common.Services
 
         public void AddItem(Item item)
         {
-            this.Items.Add(item);
+            TryAddItemToShoppingList(item);
         }
 
         public void RemoveItem(Item item)
@@ -33,7 +33,7 @@ namespace ShoppingPad.Common.Services
             this.AddToBoughtItems(item);
         }
 
-        public void TryAddItem(Item item)
+        public void TryAddItemToShoppingList(Item item)
         {
             if (this.Items.All(x => x.Title != item.Title))
             {

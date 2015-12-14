@@ -63,7 +63,7 @@ namespace ShoppingPad.iOS
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            ServiceRegistrar.ShoppingService.TryAddItem(ViewModel.Items.ElementAt(indexPath.Row));
+            ViewModel.CopyItemToShoppingList(ViewModel.Items.ElementAt(indexPath.Row));
         }
     }
 }

@@ -98,7 +98,7 @@ namespace ShoppingPad.Common
 
             if (!string.IsNullOrEmpty(title))
             {
-                ServiceRegistrar.ShoppingService.TryAddItem(new Item(title));
+                ViewModel.Add(new Item(title));
             }
 
             this.NewItem.Text = "";
@@ -164,7 +164,7 @@ namespace ShoppingPad.Common
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             var newItem = new Item(args.SelectedItem as string);
-            ServiceRegistrar.ShoppingService.AddItem(newItem);
+            ViewModel.Add(newItem);
             this.NewItem.Text = "";
         }
     }

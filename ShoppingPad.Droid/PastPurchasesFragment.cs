@@ -38,7 +38,7 @@ namespace ShoppingPad.Droid
 
             _pastPurchasesListView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs e)
             {
-                ServiceRegistrar.ShoppingService.TryAddItem(this.ViewModel.Items.ElementAt(e.Position));
+                ViewModel.CopyItemToShoppingList(this.ViewModel.Items.ElementAt(e.Position));
             };
 
             return view;

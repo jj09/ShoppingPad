@@ -91,7 +91,7 @@ namespace ShoppingPad.Tests.Services
             shoppingService.AddItem(new Item(item1));
 
             // Act
-            shoppingService.TryAddItem(new Item(item1));
+            shoppingService.TryAddItemToShoppingList(new Item(item1));
 
             // Assert
             Assert.Equal(1, shoppingService.Items.Count);
@@ -105,7 +105,7 @@ namespace ShoppingPad.Tests.Services
             var shoppingService = new ShoppingService();
 
             // Act
-            shoppingService.TryAddItem(new Item(item1));
+            shoppingService.TryAddItemToShoppingList(new Item(item1));
 
             // Assert
             Assert.Equal(1, shoppingService.Items.Count);

@@ -133,7 +133,7 @@ namespace ShoppingPad.Common
         {
             var title = ((Button) sender).Tag as string;
 
-            ServiceRegistrar.ShoppingService.TryAddItem(new Item(title));
+            ViewModel.CopyItemToShoppingList(new Item(title));
         }
     }
 }

@@ -45,7 +45,7 @@ namespace ShoppingPad.Droid
 
                 if (!string.IsNullOrEmpty(title))
                 {
-                    ServiceRegistrar.ShoppingService.TryAddItem(new Item(title));
+                    ViewModel.Add(new Item(title));
                 }
 
                 newItemEditText.Text = "";

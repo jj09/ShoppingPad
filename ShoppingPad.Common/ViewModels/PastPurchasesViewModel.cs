@@ -20,5 +20,24 @@ namespace ShoppingPad.Common.ViewModels
         {
             this._shoppingService = shoppingService;
         }
+
+        public void Add(BoughtItem item)
+        {
+            var boughtItem = Items.FirstOrDefault(x => x.Title == item.Title);
+            if (boughtItem == null)
+            {
+                this.Items.Add(item);
+            }
+            else
+            {
+                boughtItem.BoughtCount++;
+            }
+        }
+
+
+        public void CopyItemToShoppingList(Item item)
+        {
+            this._shoppingService.TryAddItemToShoppingList(new Item(item.Title));
+        }
     }
 }
