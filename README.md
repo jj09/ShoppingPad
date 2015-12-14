@@ -8,10 +8,10 @@ Multiplatform Mobile App built with Xamarin:
 	
 Requirements:
 * v1
-	* ~add/remove items from shopping list~
-	* ~keep track of the top bought items~
-		* ~enable to add items from top bought list~
-		* ~sort by freq~
+	* ~~add/remove items from shopping list~~
+	* ~~keep track of the top bought items~~
+		* ~~enable to add items from top bought list~~
+		* ~~sort by freq~~
 * v2
 	* voice integration
 
