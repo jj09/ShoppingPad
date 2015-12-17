@@ -42,8 +42,7 @@ namespace ShoppingPad.Droid
 
         void AddTabToActionBar(int labelResourceId)
         {
-            var tab = ActionBar.NewTab()
-                                         .SetText(labelResourceId);
+            var tab = ActionBar.NewTab().SetText(labelResourceId);
             tab.TabSelected += TabOnTabSelected;
             ActionBar.AddTab(tab);
         }
