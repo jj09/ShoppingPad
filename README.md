@@ -2,9 +2,9 @@
 
 Multiplatform Mobile App built with Xamarin:
 
-* Windows 10 (in progress)
-* Android (pending)
-* iOS (pending)
+* Windows 10 (v1 done)
+* Android (v1 done)
+* iOS (v1 done)
 	
 Requirements:
 * v1
