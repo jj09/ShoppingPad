@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,15 @@ namespace ShoppingPad.Common.Models
 {
     public class BoughtItem : Item
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         public int BoughtCount { get; set; }
+
+        public BoughtItem()
+        {
+
+        }
 
         public BoughtItem(string title) : base(title)
         {

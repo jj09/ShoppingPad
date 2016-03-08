@@ -5,16 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using ShoppingPad.Common.Interfaces;
 using ShoppingPad.Common.Services;
+using SQLite;
 
 namespace ShoppingPad.Common.Helpers
 {
-    // singleton implementation from Jon Skeet: http://csharpindepth.com/Articles/General/Singleton.aspx
+    
     public sealed class ServiceRegistrar
     {
-        private static readonly Lazy<IShoppingService> _shoppingService = 
-            new Lazy<IShoppingService>(() => new ShoppingService());
+        // singleton implementation from Jon Skeet: http://csharpindepth.com/Articles/General/Singleton.aspx
+        //private static readonly Lazy<IShoppingService> _shoppingService = 
+        //    new Lazy<IShoppingService>(() => new ShoppingService());
 
-        public static IShoppingService ShoppingService => _shoppingService.Value;
+        //public static IShoppingService ShoppingService => _shoppingService.Value;        
+
+        private static IShoppingService _shoppingService;
+
+        public static IShoppingService ShoppingService(SQLiteConnection sqliteConnection=null)
+        {
+            if (_shoppingService == null)
+            {
+                _shoppingService = new ShoppingService(sqliteConnection);
+            }
+
+            return _shoppingService;
+        }
 
         private ServiceRegistrar()
         {

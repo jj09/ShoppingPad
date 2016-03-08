@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ShoppingPad.Common.Interfaces;
 using ShoppingPad.Common.Models;
+using SQLite;
+using System.IO;
 
 namespace ShoppingPad.Common.Services
 {
@@ -15,10 +17,21 @@ namespace ShoppingPad.Common.Services
 
         public ObservableCollection<BoughtItem> BoughtItems { get; set; }
 
-        public ShoppingService()
+        private SQLiteConnection _sqliteConnection;
+
+        public ShoppingService(SQLiteConnection sqliteConnection)
         {
-            Items = new ObservableCollection<Item>();
-            BoughtItems = new ObservableCollection<BoughtItem>();
+            // setup db
+            //_sqliteConnection = new SQLiteConnection(dbPath);
+            _sqliteConnection = sqliteConnection;
+            _sqliteConnection.CreateTable<Item>();
+            _sqliteConnection.CreateTable<BoughtItem>();
+
+            var items = _sqliteConnection.Table<Item>().ToList();
+            var boughtItems = _sqliteConnection.Table<BoughtItem>().ToList();
+
+            Items = new ObservableCollection<Item>(items);
+            BoughtItems = new ObservableCollection<BoughtItem>(boughtItems);
         }
 
         public void AddItem(Item item)
@@ -29,6 +42,7 @@ namespace ShoppingPad.Common.Services
         public void RemoveItem(Item item)
         {
             this.Items.Remove(item);
+            _sqliteConnection.Delete(item);
 
             this.AddToBoughtItems(item);
         }
@@ -38,6 +52,7 @@ namespace ShoppingPad.Common.Services
             if (this.Items.All(x => x.Title != item.Title))
             {
                 this.Items.Add(item);
+                _sqliteConnection.Insert(item);
             }
         }
 
@@ -48,10 +63,15 @@ namespace ShoppingPad.Common.Services
             if (boughtItem != null)
             {
                 ++boughtItem.BoughtCount;
+                var bi = _sqliteConnection.Table<BoughtItem>().FirstOrDefault(x => x.Title == item.Title);
+                bi.BoughtCount++;
+                _sqliteConnection.Update(bi);
             }
             else
             {
-                this.BoughtItems.Add(new BoughtItem(item.Title));
+                var newBoughtItem = new BoughtItem(item.Title);
+                this.BoughtItems.Add(newBoughtItem);
+                _sqliteConnection.Insert(newBoughtItem);
             }
 
             this.BoughtItems = new ObservableCollection<BoughtItem>(this.BoughtItems.OrderByDescending(x => x.BoughtCount));

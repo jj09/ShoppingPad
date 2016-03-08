@@ -7,6 +7,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ShoppingPad.Common.Helpers;
+using System.IO;
 
 namespace ShoppingPad.Common
 {
@@ -18,7 +19,7 @@ namespace ShoppingPad.Common
         {
             this.InitializeComponent();
 
-            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService);
+            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService(App.SqliteConnection));
             PastPurchasesListView.ItemsSource = ViewModel.Items;
 
             // Developer will want to return to none selection when selected items are zero

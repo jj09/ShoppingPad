@@ -9,6 +9,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ShoppingPad.Common.Helpers;
+using System.IO;
 
 namespace ShoppingPad.Common
 {
@@ -19,8 +20,8 @@ namespace ShoppingPad.Common
         public ShoppingList()
         {
             this.InitializeComponent();
-
-            ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService);
+            
+            ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService(App.SqliteConnection));
             ShoppingListView.ItemsSource = ViewModel.Items;
 
             // Developer will want to return to none selection when selected items are zero
@@ -154,9 +155,9 @@ namespace ShoppingPad.Common
         private string[] GetSuggestions(string text)
         {
             return
-                ServiceRegistrar.ShoppingService.BoughtItems
+                ServiceRegistrar.ShoppingService(App.SqliteConnection).BoughtItems
                     .Where(boughtItem => boughtItem.Title.ToLower().Contains(text.ToLower()) 
-                        && ServiceRegistrar.ShoppingService.Items.All(x => !string.Equals(x.Title, boughtItem.Title, StringComparison.CurrentCultureIgnoreCase)))
+                        && ServiceRegistrar.ShoppingService(App.SqliteConnection).Items.All(x => !string.Equals(x.Title, boughtItem.Title, StringComparison.CurrentCultureIgnoreCase)))
                     .Select(x => x.Title)
                     .ToArray();
         }
@@ -164,7 +165,11 @@ namespace ShoppingPad.Common
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             var newItem = new Item(args.SelectedItem as string);
+<<<<<<< HEAD
             ViewModel.Add(newItem);
+=======
+            ServiceRegistrar.ShoppingService(App.SqliteConnection).AddItem(newItem);
+>>>>>>> Add SQLite for UWP
             this.NewItem.Text = "";
         }
     }
