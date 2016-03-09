@@ -29,7 +29,7 @@ namespace ShoppingPad.Droid
             this._inflater = inflater;
             View view = inflater.Inflate(Resource.Layout.ic_tab_shopping_list, null);
             
-            ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService(MainActivity.SqlLiteConnection));
+            ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService(MainActivity.SqliteConnection));
 
             _shoppingListView = view.FindViewById<ListView>(Resource.Id.ShoppingListView);
 

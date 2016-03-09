@@ -19,11 +19,11 @@ namespace ShoppingPad.iOS
 
 			AddNewItemButton.TouchUpInside += (sender, e) => {
 				var title = NewItemTextField.Text;
-				ServiceRegistrar.ShoppingService.TryAddItemToShoppingList (new Item (title));
-                NavigationController.PopToRootViewController(true);
+				ServiceRegistrar.ShoppingService(Application.SqliteConnection).TryAddItemToShoppingList (new Item (title));
+				NavigationController.PopToRootViewController(true);
 			};
 		}
-    }
+	}
 }
 
 

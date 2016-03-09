@@ -14,7 +14,7 @@ Requirements:
 		* ~~sort by freq~~
 
 * v1.1
-	* add persistance (SQLite)
+	* ~~add persistance (SQLite)~~
 
 * v2
 	* voice integration

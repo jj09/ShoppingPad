@@ -37,7 +37,7 @@ namespace ShoppingPad.iOS
 
         public PastPurchasesTableSource()
         {
-            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService);
+            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService(Application.SqliteConnection));
         }
 
         public override nint RowsInSection(UITableView tableview, nint section)
