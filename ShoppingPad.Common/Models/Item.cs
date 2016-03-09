@@ -22,6 +22,6 @@ namespace ShoppingPad.Common.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public string Title;
+        public string Title { get; set; }
     }
 }

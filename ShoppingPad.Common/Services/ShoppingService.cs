@@ -42,7 +42,7 @@ namespace ShoppingPad.Common.Services
         public void RemoveItem(Item item)
         {
             this.Items.Remove(item);
-            _sqliteConnection.Delete(item);
+            _sqliteConnection.Delete<Item>(item.Id);
 
             this.AddToBoughtItems(item);
         }
@@ -52,7 +52,10 @@ namespace ShoppingPad.Common.Services
             if (this.Items.All(x => x.Title != item.Title))
             {
                 this.Items.Add(item);
-                _sqliteConnection.Insert(item);
+                _sqliteConnection.Insert(new Item()
+                {
+                    Title = item.Title
+                });
             }
         }
 
@@ -69,9 +72,13 @@ namespace ShoppingPad.Common.Services
             }
             else
             {
-                var newBoughtItem = new BoughtItem(item.Title);
+                var newBoughtItem = new BoughtItem()
+                {
+                    Title = item.Title,
+                    BoughtCount = 1
+                };
                 this.BoughtItems.Add(newBoughtItem);
-                _sqliteConnection.Insert(newBoughtItem);
+                _sqliteConnection.Insert(newBoughtItem, typeof(BoughtItem));
             }
 
             this.BoughtItems = new ObservableCollection<BoughtItem>(this.BoughtItems.OrderByDescending(x => x.BoughtCount));
