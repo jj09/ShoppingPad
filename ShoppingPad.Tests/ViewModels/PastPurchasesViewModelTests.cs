@@ -8,16 +8,31 @@ using ShoppingPad.Common.Models;
 using ShoppingPad.Common.Services;
 using ShoppingPad.Common.ViewModels;
 using Xunit;
+using SQLite;
+using System.IO;
 
 namespace ShoppingPad.Tests.ViewModels
 {
     public class PastPurchasesViewModelTests
     {
+        SQLiteConnection _sqliteConnection;
+
+        public PastPurchasesViewModelTests()
+        {
+            _sqliteConnection = new SQLiteConnection(Guid.NewGuid().ToString());
+        }
+
+        public void Dispose()
+        {
+            _sqliteConnection.Close();
+            File.Delete(_sqliteConnection.DatabasePath);
+        }
+
         [Fact]
         public void Add_Item()
         {
             // Arrange
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
             var vm = new PastPurchasesViewModel(shoppingService);
             var item = new BoughtItem("item 1");
 
@@ -32,7 +47,7 @@ namespace ShoppingPad.Tests.ViewModels
         public void Add_Item_Already_Added()
         {
             // Arrange
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
             var vm = new PastPurchasesViewModel(shoppingService);
             var item = new BoughtItem("item 1");
             vm.Add(item);
@@ -50,7 +65,7 @@ namespace ShoppingPad.Tests.ViewModels
         public void Copy_Item_To_Shopping_List()
         {
             // Arrange
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
             var vm = new PastPurchasesViewModel(shoppingService);
             var itemTitle = "item1";
             var item = new BoughtItem(itemTitle);

@@ -165,11 +165,7 @@ namespace ShoppingPad.Common
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             var newItem = new Item(args.SelectedItem as string);
-<<<<<<< HEAD
             ViewModel.Add(newItem);
-=======
-            ServiceRegistrar.ShoppingService(App.SqliteConnection).AddItem(newItem);
->>>>>>> Add SQLite for UWP
             this.NewItem.Text = "";
         }
     }

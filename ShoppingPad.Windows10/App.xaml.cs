@@ -31,7 +31,7 @@ namespace ShoppingPad.Common
         /// </summary>
         public App()
         {
-            var dbPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.db3");
+            var dbPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "ShoppingPad.db3");
             SqliteConnection = new SQLiteConnection(dbPath);
 
             this.InitializeComponent();
