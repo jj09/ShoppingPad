@@ -12,6 +12,10 @@ Requirements:
 	* ~~keep track of the top bought items~~
 		* ~~enable to add items from top bought list~~
 		* ~~sort by freq~~
+
+* v1.1
+	* add persistance (SQLite)
+
 * v2
 	* voice integration
 
