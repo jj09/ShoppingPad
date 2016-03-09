@@ -52,10 +52,7 @@ namespace ShoppingPad.Common.Services
             if (this.Items.All(x => x.Title != item.Title))
             {
                 this.Items.Add(item);
-                _sqliteConnection.Insert(new Item()
-                {
-                    Title = item.Title
-                });
+                _sqliteConnection.Insert(item);
             }
         }
 

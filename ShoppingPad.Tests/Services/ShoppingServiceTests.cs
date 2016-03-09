@@ -6,17 +6,32 @@ using System.Threading.Tasks;
 using ShoppingPad.Common.Models;
 using ShoppingPad.Common.Services;
 using Xunit;
+using SQLite;
+using System.IO;
 
 namespace ShoppingPad.Tests.Services
 {
-    public class ShoppingServiceTests
+    public class ShoppingServiceTests : IDisposable
     {
+        SQLiteConnection _sqliteConnection;
+
+        public ShoppingServiceTests()
+        {
+            _sqliteConnection = new SQLiteConnection(Guid.NewGuid().ToString());
+        }
+
+        public void Dispose()
+        {
+            _sqliteConnection.Close();
+            File.Delete(_sqliteConnection.DatabasePath);
+        }
+
         [Fact]
         public void Add_Item_To_ShoppingList()
         {
             // Arrange
             var item = new Item("item");
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
 
             // Act
             shoppingService.AddItem(item);
@@ -30,7 +45,7 @@ namespace ShoppingPad.Tests.Services
         {
             // Arrange
             var item = new Item("item");
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
             shoppingService.AddItem(item);
 
             // Act
@@ -48,9 +63,9 @@ namespace ShoppingPad.Tests.Services
             // Arrange
             var itemTitle = "item";
             var item = new Item(itemTitle);
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
             shoppingService.AddItem(item);
-            shoppingService.BoughtItems.Add(new BoughtItem(itemTitle));
+            shoppingService.AddToBoughtItems(item);
 
             // Act
             shoppingService.RemoveItem(item);
@@ -67,7 +82,7 @@ namespace ShoppingPad.Tests.Services
             var item1 = "item 1";
             var item2 = "item 2";
             var item3 = "item 3";
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
 
             // Act
             shoppingService.AddToBoughtItems(new Item(item1));
@@ -87,7 +102,7 @@ namespace ShoppingPad.Tests.Services
         {
             // Arrange
             var item1 = "item 1";
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
             shoppingService.AddItem(new Item(item1));
 
             // Act
@@ -102,7 +117,7 @@ namespace ShoppingPad.Tests.Services
         {
             // Arrange
             var item1 = "item 1";
-            var shoppingService = new ShoppingService();
+            var shoppingService = new ShoppingService(_sqliteConnection);
 
             // Act
             shoppingService.TryAddItemToShoppingList(new Item(item1));
@@ -110,6 +125,5 @@ namespace ShoppingPad.Tests.Services
             // Assert
             Assert.Equal(1, shoppingService.Items.Count);
         }
-
     }
 }
