@@ -12,6 +12,9 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using SQLite;
+using System.IO;
+using ShoppingPad.Common.Helpers;
 
 namespace ShoppingPad.Droid
 {
@@ -20,9 +23,16 @@ namespace ShoppingPad.Droid
     {
         private Fragment[] _fragments;
 
+        public static SQLiteConnection SqlLiteConnection;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            // init db
+            var libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            var path = Path.Combine(libraryPath, ServiceRegistrar.DbFileName);
+            SqlLiteConnection = new SQLiteConnection(path);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);

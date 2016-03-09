@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using ShoppingPad.Common.Helpers;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +32,7 @@ namespace ShoppingPad.Common
         /// </summary>
         public App()
         {
-            var dbPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "ShoppingPad.db3");
+            var dbPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, ServiceRegistrar.DbFileName);
             SqliteConnection = new SQLiteConnection(dbPath);
 
             this.InitializeComponent();

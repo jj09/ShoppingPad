@@ -30,7 +30,7 @@ namespace ShoppingPad.Droid
 
             View view = inflater.Inflate(Resource.Layout.ic_tab_past_purchases, null);
             
-            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService());
+            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService(MainActivity.SqlLiteConnection));
 
             _pastPurchasesListView = view.FindViewById<ListView>(Resource.Id.PastPurchasesListView);
 

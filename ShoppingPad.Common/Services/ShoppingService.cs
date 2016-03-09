@@ -17,7 +17,7 @@ namespace ShoppingPad.Common.Services
 
         public ObservableCollection<BoughtItem> BoughtItems { get; set; }
 
-        private SQLiteConnection _sqliteConnection;
+        private SQLiteConnection _sqliteConnection; // https://github.com/praeclarum/sqlite-net
 
         public ShoppingService(SQLiteConnection sqliteConnection)
         {

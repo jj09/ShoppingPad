@@ -20,7 +20,7 @@ namespace ShoppingPad.Common.Helpers
 
         private static IShoppingService _shoppingService;
 
-        public static IShoppingService ShoppingService(SQLiteConnection sqliteConnection=null)
+        public static IShoppingService ShoppingService(SQLiteConnection sqliteConnection)
         {
             if (_shoppingService == null)
             {
@@ -33,5 +33,7 @@ namespace ShoppingPad.Common.Helpers
         private ServiceRegistrar()
         {
         }
+
+        public static string DbFileName = "ShoppingPad_v_1_1";
     }
 }
