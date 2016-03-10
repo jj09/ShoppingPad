@@ -115,9 +115,11 @@
     <InterfaceDefinition Include="AddItemViewController.xib" />
   </ItemGroup>
   <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork%402x" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="PastPurchasesTableViewController.xib" />
+    <ITunesArtwork Include="iTunesArtwork" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +144,65 @@
       <Project>{B2C1B6BB-063C-4BAA-B9FA-16617CACC4AE}</Project>
       <Name>ShoppingPad.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-100.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-114.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-144.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-57.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-58.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-Small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon-120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="Resources\iTunesArtwork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="Resources\iTunesArtwork%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default%402x.png" />
   </ItemGroup>
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

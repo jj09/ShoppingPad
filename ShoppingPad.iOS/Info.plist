@@ -13,7 +13,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>8.4</string>
+	<string></string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -32,7 +32,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>XSAppIconAssets</key>
-	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
+	<key>CFBundleDisplayName</key>
+	<string>Shopping Pad</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon@2x.png</string>
+		<string>Icon.png</string>
+		<string>Icon-60@2x.png</string>
+		<string>Icon-Small@2x.png</string>
+		<string>Icon-Small.png</string>
+		<string>Icon-Small-40@2x.png</string>
+	</array>
 </dict>
 </plist>

@@ -15,6 +15,9 @@ Requirements:
 
 * v1.1
 	* ~~add persistance (SQLite)~~
+    
+* v1.2
+    * removing items from list
 
 * v2
 	* voice integration
