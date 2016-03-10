@@ -72,11 +72,10 @@ namespace ShoppingPad.Droid
             SqliteConnection.Close();
         }
 
-        protected override void OnResume()
+        protected override void OnPause()
         {
-            base.OnResume();
+            base.OnPause();
             SqliteConnection.Commit();
-            SqliteConnection.Close();
         }
     }
 }
