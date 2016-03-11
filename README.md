@@ -1,5 +1,7 @@
 ## Shopping Pad
 
+![Shopping Pad](ShoppingPad.png)
+
 Multiplatform Mobile App built with Xamarin that enables you to create shopping list, keep track of past purchases, and reuse them for new list creation.
 
 * Windows 10 (v1 done)
