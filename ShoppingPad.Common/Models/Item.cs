@@ -9,6 +9,11 @@ namespace ShoppingPad.Common.Models
 {
     public class Item
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public string Title { get; set; }
+
         public Item()
         {
 
@@ -18,10 +23,5 @@ namespace ShoppingPad.Common.Models
         {
             this.Title = title;
         }
-
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-
-        public string Title { get; set; }
     }
 }
