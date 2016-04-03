@@ -77,7 +77,7 @@
     <MtouchProfiling>true</MtouchProfiling>
     <IpaPackageName>
     </IpaPackageName>
-    <CodesignProvision>1d6a2c95-e616-47f8-b8b3-a033f3c08332</CodesignProvision>
+    <CodesignProvision>2a49fc7e-1504-4235-b2fc-bed57dd61f9a</CodesignProvision>
     <CodesignResourceRules />
     <CodesignExtraArgs />
   </PropertyGroup>
@@ -115,11 +115,9 @@
     <InterfaceDefinition Include="AddItemViewController.xib" />
   </ItemGroup>
   <ItemGroup>
-    <ITunesArtwork Include="iTunesArtwork%402x" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="PastPurchasesTableViewController.xib" />
-    <ITunesArtwork Include="iTunesArtwork" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +201,13 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default%402x.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Icons\ArchiveIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Icons\ListIcon.png" />
   </ItemGroup>
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -105,7 +105,6 @@ namespace ShoppingPad.Common
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
             SqliteConnection.Commit();
             SqliteConnection.Close();
             deferral.Complete();
