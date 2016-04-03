@@ -16,10 +16,7 @@ namespace ShoppingPad.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            //this.EdgesForExtendedLayout = UIRectEdge.Top;
-            //self.tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-
+            
             // Perform any additional setup after loading the view, typically from a nib.
             var table = new UITableView(); // defaults to Plain style
             table.Source = new PastPurchasesTableSource();
