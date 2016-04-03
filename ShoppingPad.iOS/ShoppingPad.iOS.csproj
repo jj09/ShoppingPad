@@ -118,9 +118,14 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="PastPurchasesTableViewController.xib" />
+    <InterfaceDefinition Include="Launch.storyboard" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Launch.cs" />
+    <Compile Include="Launch.designer.cs">
+      <DependentUpon>Launch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="PastPurchasesTableViewController.cs" />
