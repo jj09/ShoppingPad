@@ -5,7 +5,7 @@
 	<key>CFBundleName</key>
 	<string>ShoppingPad.iOS</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.jj09.shoppingpad</string>
+	<string>jj09.shoppingpad</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
