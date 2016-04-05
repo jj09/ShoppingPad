@@ -44,6 +44,10 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchProfiling>true</MtouchProfiling>
+    <CodesignProvision>73a045f2-da4c-452e-847c-95d0d06f1e2f</CodesignProvision>
+    <CodesignEntitlements />
+    <CodesignResourceRules />
+    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -56,11 +60,13 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchUseSGen>true</MtouchUseSGen>
-    <CodesignKey>iPhone Distribution: Jakub Jedryszek (FF4TXU272U)</CodesignKey>
+    <CodesignKey>iPhone Developer: Jakub Jedryszek (GB5K8LYNMV)</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <CodesignProvision>c7cb3fed-5196-42cc-aa6e-dcf885359b0a</CodesignProvision>
     <CodesignResourceRules />
     <CodesignExtraArgs />
+    <BuildIpa>False</BuildIpa>
+    <IpaIncludeArtwork>False</IpaIncludeArtwork>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
