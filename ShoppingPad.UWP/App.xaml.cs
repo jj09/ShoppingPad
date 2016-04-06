@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShoppingPad.Common
+namespace ShoppingPad.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

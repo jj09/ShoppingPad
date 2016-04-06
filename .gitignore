@@ -254,3 +254,8 @@ $RECYCLE.BIN/
 
 #Android
 *.apk
+
+#UWP
+BundleArtifacts
+*.appx
+_pkginfo.txt

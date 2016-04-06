@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Controls;
 using ShoppingPad.Common.Helpers;
 using System.IO;
 
-namespace ShoppingPad.Common
+namespace ShoppingPad.UWP
 {
     public sealed partial class PastPurchases : Page
     {

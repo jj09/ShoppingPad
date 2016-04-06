@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
-namespace ShoppingPad.Common
+namespace ShoppingPad.UWP
 {
     public class ListViewEdgeTappedEventArgs : EventArgs
     {
