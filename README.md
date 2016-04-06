@@ -10,13 +10,13 @@ Multiplatform Mobile App built with Xamarin that enables you to create shopping 
 	
 Requirements:
 * v1
-	* ~~add/remove items from shopping list~~
-	* ~~keep track of the top bought items~~
-		* ~~enable to add items from top bought list~~
-		* ~~sort by freq~~
+	* [x] add/remove items from shopping list
+	* [x] keep track of the top bought items
+		* [x] enable to add items from top bought list
+		* [x] sort by freq
 
 * v1.1
-	* ~~add persistance (SQLite)~~
+	* [x] add persistance (SQLite)
     
 * v1.2
     * removing items from list
