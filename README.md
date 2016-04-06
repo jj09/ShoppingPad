@@ -19,15 +19,15 @@ Requirements:
 	* [x] add persistance (SQLite)
     
 * v1.2
-    * removing items from list
+    * [ ] removing items from list
 
 * v2
-	* voice integration
+	* [ ] voice integration
 
 * v3
-	* sync data with cloud
+	* [ ] sync data with cloud
 		* Mobile Services
 		* requires auth
 
 * v4
-	* scanning bar codes
+	* [ ] scanning bar codes
