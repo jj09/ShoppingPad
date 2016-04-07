@@ -259,3 +259,4 @@ $RECYCLE.BIN/
 BundleArtifacts
 *.appx
 _pkginfo.txt
+Package.StoreAssociation.xml
