@@ -8,7 +8,7 @@ Multiplatform Mobile App built with Xamarin that enables you to create shopping 
 * Android (v1 done)
 * iOS (v1 done)
 	
-Requirements:
+###Roadmap:
 * v1
 	* [x] add/remove items from shopping list
 	* [x] keep track of the top bought items
