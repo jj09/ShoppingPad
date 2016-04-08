@@ -9,8 +9,9 @@ namespace ShoppingPad.Common.Models
 {
     public class BoughtItem : Item
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        // crashes in UWP as duplicated prop
+        //[PrimaryKey, AutoIncrement]
+        //public int Id { get; set; }
 
         public int BoughtCount { get; set; }
 
