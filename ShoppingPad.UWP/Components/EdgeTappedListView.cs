@@ -76,6 +76,7 @@ namespace ShoppingPad.UWP
                 // This conditional was commented to enable this on non-Mobile devices.
                 // var qualifiers = Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().QualifierValues;
                 // if (qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "Mobile")
+                try
                 {
                     if (e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Touch)
                     {
@@ -90,6 +91,10 @@ namespace ShoppingPad.UWP
                             }
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    // this might be a place where app crashes sometimes
                 }
             }
         }
