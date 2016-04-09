@@ -77,6 +77,7 @@ namespace ShoppingPad.UWP
 
                 // Register a handler for BackRequested events and set the
                 // visibility of the Back button
+                // http://www.wintellect.com/devcenter/jprosise/handling-the-back-button-in-windows-10-uwp-apps
                 SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
