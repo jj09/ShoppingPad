@@ -22,12 +22,10 @@ Multiplatform Mobile App built with Xamarin that enables you to create shopping 
     * [ ] removing items from list
 
 * v2
-	* [ ] voice integration
+	* [ ] sync data with cloud (fb/tw/G+/gh auth)
 
 * v3
-	* [ ] sync data with cloud
-		* Mobile Services
-		* requires auth
+	* [ ] voice integration
 
 * v4
 	* [ ] scanning bar codes
