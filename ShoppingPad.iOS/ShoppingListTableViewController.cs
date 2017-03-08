@@ -19,8 +19,8 @@ namespace ShoppingPad.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			// Perform any additional setup after loading the view, typically from a nib.
-			base.ViewDidLoad ();
+
+			// Perform any additional setup after loading the view, typically from a nib.			
 			var table = new UITableView(View.Bounds); // defaults to Plain style
 			table.Source = new ShoppingListTableSource();
 			TableView = table;
