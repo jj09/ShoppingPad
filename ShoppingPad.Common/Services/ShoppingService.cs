@@ -29,7 +29,7 @@ namespace ShoppingPad.Common.Services
             _sqliteConnection.CreateTable<BoughtItem>();
 
             var items = _sqliteConnection.Table<Item>().ToList();
-            var boughtItems = _sqliteConnection.Table<BoughtItem>().ToList();
+            var boughtItems = _sqliteConnection.Table<BoughtItem>().ToList().OrderByDescending(x => x.BoughtCount);
 
             Items = new ObservableCollection<Item>(items);
             BoughtItems = new ObservableCollection<BoughtItem>(boughtItems);

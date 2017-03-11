@@ -125,5 +125,26 @@ namespace ShoppingPad.Tests.Services
             // Assert
             Assert.Equal(1, shoppingService.Items.Count);
         }
+
+        [Fact]
+        public void PastPurchases_RestoringFromDb_Sorted()
+        {
+            // Arrange
+            var item1 = "item 1";
+            var item2 = "item 2";
+            var shoppingService = new ShoppingService(_sqliteConnection);
+            shoppingService.AddToBoughtItems(new Item(item1));
+            shoppingService.AddToBoughtItems(new Item(item2));
+            shoppingService.AddToBoughtItems(new Item(item2));
+
+            // Act
+            shoppingService = new ShoppingService(_sqliteConnection);
+
+            // Assert
+            Assert.Equal(item2, shoppingService.BoughtItems.FirstOrDefault()?.Title);
+            Assert.Equal(2, shoppingService.BoughtItems.FirstOrDefault()?.BoughtCount);
+            Assert.Equal(item1, shoppingService.BoughtItems.LastOrDefault()?.Title);
+            Assert.Equal(1, shoppingService.BoughtItems.LastOrDefault()?.BoughtCount);
+        }
     }
 }
