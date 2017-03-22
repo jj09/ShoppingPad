@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -11,27 +11,28 @@ using UIKit;
 
 namespace ShoppingPad.iOS
 {
-	[Register ("AddItemViewController")]
-	partial class AddItemViewController
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton AddNewItemButton { get; set; }
+    [Register ("AddItemViewController")]
+    partial class AddItemViewController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton AddNewItemButton { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UITextField NewItemTextField { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField NewItemTextField { get; set; }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (AddNewItemButton != null) {
-				AddNewItemButton.Dispose ();
-				AddNewItemButton = null;
-			}
-			if (NewItemTextField != null) {
-				NewItemTextField.Dispose ();
-				NewItemTextField = null;
-			}
-		}
-	}
+        void ReleaseDesignerOutlets ()
+        {
+            if (AddNewItemButton != null) {
+                AddNewItemButton.Dispose ();
+                AddNewItemButton = null;
+            }
+
+            if (NewItemTextField != null) {
+                NewItemTextField.Dispose ();
+                NewItemTextField = null;
+            }
+        }
+    }
 }

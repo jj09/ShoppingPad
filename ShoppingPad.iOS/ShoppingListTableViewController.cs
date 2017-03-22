@@ -20,10 +20,8 @@ namespace ShoppingPad.iOS
 		{
 			base.ViewDidLoad();
 
-			// Perform any additional setup after loading the view, typically from a nib.			
-			var table = new UITableView(View.Bounds); // defaults to Plain style
-			table.Source = new ShoppingListTableSource();
-			TableView = table;
+            TableView = new UITableView(View.Bounds);
+            TableView.Source = new ShoppingListTableSource();
 		}
 
 		public override void ViewWillAppear(bool animated)

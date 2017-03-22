@@ -41,13 +41,15 @@
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchFastDev>true</MtouchFastDev>
-    <MtouchDebug>true</MtouchDebug>
+    <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignProvision>73a045f2-da4c-452e-847c-95d0d06f1e2f</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignEntitlements />
     <CodesignResourceRules />
     <CodesignExtraArgs />
+    <IOSDebugOverWiFi>False</IOSDebugOverWiFi>
+    <IOSDebuggerPort>10000</IOSDebuggerPort>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -60,9 +62,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchUseSGen>true</MtouchUseSGen>
-    <CodesignKey>iPhone Developer: Jakub Jedryszek (GB5K8LYNMV)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <CodesignProvision>c7cb3fed-5196-42cc-aa6e-dcf885359b0a</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignResourceRules />
     <CodesignExtraArgs />
     <BuildIpa>False</BuildIpa>
@@ -101,7 +103,7 @@
     <MtouchProfiling>true</MtouchProfiling>
     <IpaPackageName>
     </IpaPackageName>
-    <CodesignProvision>2a49fc7e-1504-4235-b2fc-bed57dd61f9a</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignResourceRules />
     <CodesignExtraArgs />
   </PropertyGroup>
@@ -120,7 +122,7 @@
     <MtouchFloat32>False</MtouchFloat32>
     <MtouchI18n />
     <CodesignKey>iPhone Distribution</CodesignKey>
-    <CodesignProvision>c7cb3fed-5196-42cc-aa6e-dcf885359b0a</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignEntitlements />
     <CodesignResourceRules />
     <CodesignExtraArgs />
