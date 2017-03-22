@@ -34,4 +34,4 @@ Shopping Pad is a smart shopping list that allows you not only to create a shopp
 
 ### Created with
 
-<a href="http://xamarin.com"><img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Xamarin_logo_and_wordmark.png" width="600px" /></a>
+<a href="http://xamarin.com"><img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Xamarin_logo_and_wordmark.png" width="400px" /></a>
