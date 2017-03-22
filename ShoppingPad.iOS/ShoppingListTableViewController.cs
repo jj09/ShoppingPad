@@ -22,6 +22,27 @@ namespace ShoppingPad.iOS
 
             TableView = new UITableView(View.Bounds);
             TableView.Source = new ShoppingListTableSource();
+
+            _addButton.Clicked += (s, e) =>
+            {
+                var addPopup = UIAlertController.Create("Enter name:", "", UIAlertControllerStyle.Alert);
+
+                addPopup.AddTextField(x => { });
+
+                addPopup.AddAction(UIAlertAction.Create("Add", UIAlertActionStyle.Default, x =>
+                {
+                    var title = addPopup.TextFields[0]?.Text;
+                    ServiceRegistrar.ShoppingService(Application.SqliteConnection).TryAddItemToShoppingList(new Item(title));
+                    TableView.ReloadData();
+                }));
+
+                addPopup.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, x =>
+                {
+                    // noop
+                }));
+
+                PresentViewController(addPopup, true, null);
+            };
 		}
 
 		public override void ViewWillAppear(bool animated)

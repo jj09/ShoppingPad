@@ -44,7 +44,8 @@
     <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <CodesignEntitlements />
     <CodesignResourceRules />
     <CodesignExtraArgs />
@@ -62,13 +63,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchUseSGen>true</MtouchUseSGen>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <CodesignProvision></CodesignProvision>
-    <CodesignResourceRules />
-    <CodesignExtraArgs />
-    <BuildIpa>False</BuildIpa>
+    <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
+    <MtouchDebug>False</MtouchDebug>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -103,7 +102,8 @@
     <MtouchProfiling>true</MtouchProfiling>
     <IpaPackageName>
     </IpaPackageName>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <CodesignResourceRules />
     <CodesignExtraArgs />
   </PropertyGroup>
@@ -122,7 +122,8 @@
     <MtouchFloat32>False</MtouchFloat32>
     <MtouchI18n />
     <CodesignKey>iPhone Distribution</CodesignKey>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <CodesignEntitlements />
     <CodesignResourceRules />
     <CodesignExtraArgs />
@@ -159,13 +160,10 @@
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="ShoppingListTableViewController.xib" />
-    <InterfaceDefinition Include="AddItemViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <InterfaceDefinition Include="PastPurchasesTableViewController.xib" />
     <InterfaceDefinition Include="Launch.storyboard" />
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
@@ -185,10 +183,6 @@
     <Compile Include="ShoppingListTableViewController.cs" />
     <Compile Include="ShoppingListTableViewController.designer.cs">
       <DependentUpon>ShoppingListTableViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddItemViewController.cs" />
-    <Compile Include="AddItemViewController.designer.cs">
-      <DependentUpon>AddItemViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
