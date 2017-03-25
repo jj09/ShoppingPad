@@ -6,34 +6,27 @@ using System.Threading.Tasks;
 using ShoppingPad.Common.Interfaces;
 using ShoppingPad.Common.Services;
 using SQLite;
+using Autofac;
+using ShoppingPad.Common.ViewModels;
 
 namespace ShoppingPad.Common.Helpers
 {
-    
-    public sealed class ServiceRegistrar
+    // installation workaround: Install-package System.Runtime.InteropServices.RuntimeInformation first (https://github.com/dotnet/corefx/issues/10445)
+    public static class ServiceRegistrar
     {
-        // singleton implementation from Jon Skeet: http://csharpindepth.com/Articles/General/Singleton.aspx
-        //private static readonly Lazy<IShoppingService> _shoppingService = 
-        //    new Lazy<IShoppingService>(() => new ShoppingService());
-
-        //public static IShoppingService ShoppingService => _shoppingService.Value;        
-
-        private static IShoppingService _shoppingService;
-
-        public static IShoppingService ShoppingService(SQLiteConnection sqliteConnection)
-        {
-            if (_shoppingService == null)
-            {
-                _shoppingService = new ShoppingService(sqliteConnection);
-            }
-
-            return _shoppingService;
-        }
-
-        private ServiceRegistrar()
-        {
-        }
-
         public static string DbFileName = "ShoppingPad_v_1_1";
+
+        public static IContainer Container { get; set; }
+
+        public static void Initialize(SQLiteConnection sqliteConnection)
+        {
+            var builder = new ContainerBuilder();
+
+            builder.RegisterInstance(new ShoppingService(sqliteConnection)).As<IShoppingService>();
+            builder.RegisterType<ShoppingListViewModel>();
+            builder.RegisterType<PastPurchasesViewModel>();
+
+            Container = builder.Build();
+        }
     }
 }

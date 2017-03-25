@@ -4,6 +4,8 @@ using Foundation;
 using ShoppingPad.Common.Helpers;
 using ShoppingPad.Common.ViewModels;
 using UIKit;
+using ShoppingPad.Common.Interfaces;
+using Autofac;
 
 namespace ShoppingPad.iOS
 {
@@ -35,7 +37,7 @@ namespace ShoppingPad.iOS
 
         public PastPurchasesTableSource()
         {
-            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService(Application.SqliteConnection));
+            ViewModel = ServiceRegistrar.Container.Resolve<PastPurchasesViewModel>();
         }
 
         public override nint RowsInSection(UITableView tableview, nint section)

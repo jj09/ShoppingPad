@@ -1,4 +1,8 @@
 ﻿using Foundation;
+using ShoppingPad.Common.Helpers;
+using SQLite;
+using System;
+using System.IO;
 using UIKit;
 
 namespace ShoppingPad.iOS
@@ -17,10 +21,12 @@ namespace ShoppingPad.iOS
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); // Documents folder
+            string libraryPath = Path.Combine(documentsPath, "..", "Library"); // Library folder instead
+            var path = Path.Combine(libraryPath, ServiceRegistrar.DbFileName);
+            ServiceRegistrar.Initialize(new SQLiteConnection(path));
 
-			return true;
+            return true;
 		}
 
 		public override void OnResignActivation (UIApplication application)

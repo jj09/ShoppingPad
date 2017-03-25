@@ -15,7 +15,6 @@ namespace ShoppingPad.Common.ViewModels
 
         private readonly IShoppingService _shoppingService;
 
-
         public PastPurchasesViewModel(IShoppingService shoppingService)
         {
             this._shoppingService = shoppingService;

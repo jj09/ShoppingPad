@@ -7,6 +7,8 @@ using ShoppingPad.Common.Models;
 using ShoppingPad.Common.Helpers;
 using System.Linq;
 using ShoppingPad.Common.ViewModels;
+using ShoppingPad.Common.Interfaces;
+using Autofac;
 
 namespace ShoppingPad.iOS
 {
@@ -32,7 +34,7 @@ namespace ShoppingPad.iOS
                 addPopup.AddAction(UIAlertAction.Create("Add", UIAlertActionStyle.Default, x =>
                 {
                     var title = addPopup.TextFields[0]?.Text;
-                    ServiceRegistrar.ShoppingService(Application.SqliteConnection).TryAddItemToShoppingList(new Item(title));
+                    ServiceRegistrar.Container.Resolve<IShoppingService>().TryAddItemToShoppingList(new Item(title));
                     TableView.ReloadData();
                 }));
 
@@ -59,7 +61,7 @@ namespace ShoppingPad.iOS
 
 		public ShoppingListTableSource ()
 		{
-			ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService(Application.SqliteConnection));
+			ViewModel = ServiceRegistrar.Container.Resolve<ShoppingListViewModel>();
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
