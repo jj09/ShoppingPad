@@ -117,8 +117,6 @@ namespace ShoppingPad.UWP
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            SqliteConnection.Commit();
-            SqliteConnection.Close();
             deferral.Complete();
         }
 

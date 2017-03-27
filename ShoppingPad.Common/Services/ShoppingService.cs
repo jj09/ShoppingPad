@@ -18,24 +18,27 @@ namespace ShoppingPad.Common.Services
 
         public ObservableCollection<BoughtItem> BoughtItems { get; set; }
 
-        private SQLiteConnection _sqliteConnection; // https://github.com/praeclarum/sqlite-net
-
         private object _locker = new object(); // SQLite Db locker
 
-        public ShoppingService(SQLiteConnection sqliteConnection)
+        private readonly string _sqlitePath;
+
+        public ShoppingService(string sqlitePath)
         {
-            _sqliteConnection = sqliteConnection;            
-            _sqliteConnection.CreateTable<Item>();
-            _sqliteConnection.CreateTable<BoughtItem>();
+            _sqlitePath = sqlitePath;
+            using (var sqliteConnection = new SQLiteConnection(_sqlitePath))
+            {
+                sqliteConnection.CreateTable<Item>();
+                sqliteConnection.CreateTable<BoughtItem>();
 
-            var items = _sqliteConnection.Table<Item>().ToList();
-            var boughtItems = _sqliteConnection.Table<BoughtItem>().ToList().OrderByDescending(x => x.BoughtCount);
+                var items = sqliteConnection.Table<Item>().ToList();
+                var boughtItems = sqliteConnection.Table<BoughtItem>().ToList().OrderByDescending(x => x.BoughtCount);
 
-            Items = new ObservableCollection<Item>(items);
-            BoughtItems = new ObservableCollection<BoughtItem>(boughtItems);
+                Items = new ObservableCollection<Item>(items);
+                BoughtItems = new ObservableCollection<BoughtItem>(boughtItems);
 
-            Items.CollectionChanged += Items_CollectionChanged;
-            BoughtItems.CollectionChanged += BoughtItems_CollectionChanged;
+                Items.CollectionChanged += Items_CollectionChanged;
+                BoughtItems.CollectionChanged += BoughtItems_CollectionChanged;
+            }
         }
 
         private void BoughtItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -46,8 +49,11 @@ namespace ShoppingPad.Common.Services
 
                 lock (_locker)
                 {
-                    _sqliteConnection.Insert(boughtItem, typeof(BoughtItem));
-                    _sqliteConnection.Commit();
+                    using (var sqliteConnection = new SQLiteConnection(_sqlitePath))
+                    {
+                        sqliteConnection.Insert(boughtItem, typeof(BoughtItem));
+                        sqliteConnection.Commit();
+                    }
                 }
             }
 
@@ -86,8 +92,11 @@ namespace ShoppingPad.Common.Services
 
                 lock(_locker)
                 {
-                    _sqliteConnection.Insert(item);
-                    _sqliteConnection.Commit();
+                    using (var sqliteConnection = new SQLiteConnection(_sqlitePath))
+                    {
+                        sqliteConnection.Insert(item);
+                        sqliteConnection.Commit();
+                    }
                 }
             }
 
@@ -97,8 +106,11 @@ namespace ShoppingPad.Common.Services
 
                 lock (_locker)
                 {
-                    _sqliteConnection.Delete<Item>(item.Id);
-                    _sqliteConnection.Commit();
+                    using (var sqliteConnection = new SQLiteConnection(_sqlitePath))
+                    {
+                        sqliteConnection.Delete<Item>(item.Id);
+                        sqliteConnection.Commit();
+                    }
                 }
             }
         }
@@ -129,12 +141,17 @@ namespace ShoppingPad.Common.Services
             if (boughtItem != null)
             {
                 ++boughtItem.BoughtCount;
-                var bi = _sqliteConnection.Table<BoughtItem>().FirstOrDefault(x => x.Title == item.Title);
-                bi.BoughtCount++;
-                lock(_locker)
+
+                using (var sqliteConnection = new SQLiteConnection(_sqlitePath))
                 {
-                    _sqliteConnection.Update(bi);
-                    _sqliteConnection.Commit();
+
+                    var dbBoughtItem = sqliteConnection.Table<BoughtItem>().FirstOrDefault(x => x.Title == item.Title);
+                    dbBoughtItem.BoughtCount++;
+                    lock (_locker)
+                    {
+                        sqliteConnection.Update(dbBoughtItem);
+                        sqliteConnection.Commit();
+                    }
                 }
             }
             else
