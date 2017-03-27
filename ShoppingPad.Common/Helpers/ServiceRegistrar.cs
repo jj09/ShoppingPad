@@ -18,11 +18,11 @@ namespace ShoppingPad.Common.Helpers
 
         public static IContainer Container { get; set; }
 
-        public static void Initialize(SQLiteConnection sqliteConnection)
+        public static void Initialize(string path)
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterInstance(new ShoppingService(sqliteConnection)).As<IShoppingService>();
+            builder.RegisterInstance(new ShoppingService(new SQLiteConnection(path))).As<IShoppingService>();
             builder.RegisterType<ShoppingListViewModel>();
             builder.RegisterType<PastPurchasesViewModel>();
 

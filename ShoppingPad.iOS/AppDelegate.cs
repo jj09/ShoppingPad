@@ -24,7 +24,7 @@ namespace ShoppingPad.iOS
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); // Documents folder
             string libraryPath = Path.Combine(documentsPath, "..", "Library"); // Library folder instead
             var path = Path.Combine(libraryPath, ServiceRegistrar.DbFileName);
-            ServiceRegistrar.Initialize(new SQLiteConnection(path));
+            ServiceRegistrar.Initialize(path);
 
             return true;
 		}

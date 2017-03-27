@@ -23,16 +23,13 @@ namespace ShoppingPad.Droid
     {
         private Fragment[] _fragments;
 
-        public static SQLiteConnection SqliteConnection;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // init db
             var libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, ServiceRegistrar.DbFileName);
-            SqliteConnection = new SQLiteConnection(path);
+            ServiceRegistrar.Initialize(path);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -63,19 +60,6 @@ namespace ShoppingPad.Droid
 
             Fragment frag = _fragments[tab.Position];
             tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            SqliteConnection.Commit();
-            SqliteConnection.Close();
-        }
-
-        protected override void OnPause()
-        {
-            base.OnPause();
-            SqliteConnection.Commit();
         }
     }
 }

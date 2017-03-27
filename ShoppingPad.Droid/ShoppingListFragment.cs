@@ -13,6 +13,7 @@ using GalaSoft.MvvmLight.Helpers;
 using ShoppingPad.Common.Helpers;
 using ShoppingPad.Common.Models;
 using ShoppingPad.Common.ViewModels;
+using Autofac;
 
 namespace ShoppingPad.Droid
 {
@@ -29,7 +30,7 @@ namespace ShoppingPad.Droid
             this._inflater = inflater;
             View view = inflater.Inflate(Resource.Layout.ic_tab_shopping_list, null);
             
-            ViewModel = new ShoppingListViewModel(ServiceRegistrar.ShoppingService(MainActivity.SqliteConnection));
+            ViewModel =  ServiceRegistrar.Container.Resolve<ShoppingListViewModel>(); ;
 
             _shoppingListView = view.FindViewById<ListView>(Resource.Id.ShoppingListView);
 

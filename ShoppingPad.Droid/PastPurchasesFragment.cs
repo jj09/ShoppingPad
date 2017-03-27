@@ -13,6 +13,7 @@ using GalaSoft.MvvmLight.Helpers;
 using ShoppingPad.Common.Helpers;
 using ShoppingPad.Common.Models;
 using ShoppingPad.Common.ViewModels;
+using Autofac;
 
 namespace ShoppingPad.Droid
 {
@@ -30,7 +31,7 @@ namespace ShoppingPad.Droid
 
             View view = inflater.Inflate(Resource.Layout.ic_tab_past_purchases, null);
             
-            ViewModel = new PastPurchasesViewModel(ServiceRegistrar.ShoppingService(MainActivity.SqliteConnection));
+            ViewModel = ServiceRegistrar.Container.Resolve<PastPurchasesViewModel>();
 
             _pastPurchasesListView = view.FindViewById<ListView>(Resource.Id.PastPurchasesListView);
 
