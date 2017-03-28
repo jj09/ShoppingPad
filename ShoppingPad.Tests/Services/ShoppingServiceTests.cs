@@ -8,25 +8,12 @@ using ShoppingPad.Common.Services;
 using Xunit;
 using SQLite;
 using System.IO;
+using ShoppingPad.Tests.Base;
 
 namespace ShoppingPad.Tests.Services
 {
-    public class ShoppingServiceTests : IDisposable
+    public class ShoppingServiceTests : BaseShoppingServiceTests
     {
-        private ShoppingService _shoppingService;
-        private string _dbPath;
-
-        public ShoppingServiceTests()
-        {
-            _dbPath = Guid.NewGuid().ToString();
-            _shoppingService = new ShoppingService(_dbPath);
-        }
-
-        public void Dispose()
-        {            
-            File.Delete(_dbPath);
-        }
-
         [Fact]
         public void Add_Item_To_ShoppingList()
         {

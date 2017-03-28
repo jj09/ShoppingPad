@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseShoppingServiceTests.cs" />
     <Compile Include="Models\BougthItemTests.cs" />
     <Compile Include="Models\ItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

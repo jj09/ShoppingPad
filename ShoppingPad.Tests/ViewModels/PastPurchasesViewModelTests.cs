@@ -10,25 +10,12 @@ using ShoppingPad.Common.ViewModels;
 using Xunit;
 using SQLite;
 using System.IO;
+using ShoppingPad.Tests.Base;
 
 namespace ShoppingPad.Tests.ViewModels
 {
-    public class PastPurchasesViewModelTests
+    public class PastPurchasesViewModelTests : BaseShoppingServiceTests
     {
-        private ShoppingService _shoppingService;
-        private string _dbPath;
-
-        public PastPurchasesViewModelTests()
-        {
-            _dbPath = Guid.NewGuid().ToString();
-            _shoppingService = new ShoppingService(_dbPath);
-        }
-
-        public void Dispose()
-        {
-            File.Delete(_dbPath);
-        }
-
         [Fact]
         public void Add_Item()
         {
