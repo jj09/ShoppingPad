@@ -15,25 +15,24 @@ namespace ShoppingPad.Tests.ViewModels
 {
     public class PastPurchasesViewModelTests
     {
-        SQLiteConnection _sqliteConnection;
+        private ShoppingService _shoppingService;
+        private string _dbPath = Guid.NewGuid().ToString();
 
         public PastPurchasesViewModelTests()
         {
-            _sqliteConnection = new SQLiteConnection(Guid.NewGuid().ToString());
+            _shoppingService = new ShoppingService(_dbPath);
         }
 
         public void Dispose()
         {
-            _sqliteConnection.Close();
-            File.Delete(_sqliteConnection.DatabasePath);
+            File.Delete(_dbPath);
         }
 
         [Fact]
         public void Add_Item()
         {
             // Arrange
-            var shoppingService = new ShoppingService(_sqliteConnection);
-            var vm = new PastPurchasesViewModel(shoppingService);
+            var vm = new PastPurchasesViewModel(_shoppingService);
             var item = new BoughtItem("item 1");
 
             // Act
@@ -47,8 +46,7 @@ namespace ShoppingPad.Tests.ViewModels
         public void Add_Item_Already_Added()
         {
             // Arrange
-            var shoppingService = new ShoppingService(_sqliteConnection);
-            var vm = new PastPurchasesViewModel(shoppingService);
+            var vm = new PastPurchasesViewModel(_shoppingService);
             var item = new BoughtItem("item 1");
             vm.Add(item);
             var item2 = new BoughtItem("item 1");
@@ -65,8 +63,7 @@ namespace ShoppingPad.Tests.ViewModels
         public void Copy_Item_To_Shopping_List()
         {
             // Arrange
-            var shoppingService = new ShoppingService(_sqliteConnection);
-            var vm = new PastPurchasesViewModel(shoppingService);
+            var vm = new PastPurchasesViewModel(_shoppingService);
             var itemTitle = "item1";
             var item = new BoughtItem(itemTitle);
             vm.Add(item);
@@ -75,8 +72,8 @@ namespace ShoppingPad.Tests.ViewModels
             vm.CopyItemToShoppingList(item);
 
             // Assert
-            Assert.Equal(1, shoppingService.Items.Count);
-            Assert.Contains<Item>(shoppingService.Items, x => x.Title == itemTitle);
+            Assert.Equal(1, _shoppingService.Items.Count);
+            Assert.Contains<Item>(_shoppingService.Items, x => x.Title == itemTitle);
         }
     }
 }

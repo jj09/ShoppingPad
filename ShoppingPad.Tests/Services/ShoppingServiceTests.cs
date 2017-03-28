@@ -13,17 +13,17 @@ namespace ShoppingPad.Tests.Services
 {
     public class ShoppingServiceTests : IDisposable
     {
-        SQLiteConnection _sqliteConnection;
+        private ShoppingService _shoppingService;
+        private string _dbPath = Guid.NewGuid().ToString();
 
         public ShoppingServiceTests()
         {
-            _sqliteConnection = new SQLiteConnection(Guid.NewGuid().ToString());
+            _shoppingService = new ShoppingService(_dbPath);
         }
 
         public void Dispose()
         {
-            _sqliteConnection.Close();
-            File.Delete(_sqliteConnection.DatabasePath);
+            File.Delete(_dbPath);
         }
 
         [Fact]
@@ -31,13 +31,12 @@ namespace ShoppingPad.Tests.Services
         {
             // Arrange
             var item = new Item("item");
-            var shoppingService = new ShoppingService(_sqliteConnection);
 
             // Act
-            shoppingService.AddItem(item);
+            _shoppingService.AddItem(item);
 
             // Assert
-            Assert.Contains<Item>(shoppingService.Items, x => x == item);
+            Assert.Contains<Item>(_shoppingService.Items, x => x == item);
         }
 
         [Fact]
@@ -45,16 +44,15 @@ namespace ShoppingPad.Tests.Services
         {
             // Arrange
             var item = new Item("item");
-            var shoppingService = new ShoppingService(_sqliteConnection);
-            shoppingService.AddItem(item);
+            _shoppingService.AddItem(item);
 
             // Act
-            shoppingService.RemoveItem(item);
+            _shoppingService.RemoveItem(item);
 
             // Assert
-            Assert.DoesNotContain<Item>(shoppingService.Items, x => x == item);
-            Assert.Contains<BoughtItem>(shoppingService.BoughtItems, x => x.Title == item.Title);
-            Assert.Contains<BoughtItem>(shoppingService.BoughtItems, x => x.Title == item.Title && x.BoughtCount == 1);
+            Assert.DoesNotContain<Item>(_shoppingService.Items, x => x == item);
+            Assert.Contains<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title);
+            Assert.Contains<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title && x.BoughtCount == 1);
         }
 
         [Fact]
@@ -63,16 +61,15 @@ namespace ShoppingPad.Tests.Services
             // Arrange
             var itemTitle = "item";
             var item = new Item(itemTitle);
-            var shoppingService = new ShoppingService(_sqliteConnection);
-            shoppingService.AddItem(item);
-            shoppingService.AddToBoughtItems(item);
+            _shoppingService.AddItem(item);
+            _shoppingService.AddToBoughtItems(item);
 
             // Act
-            shoppingService.RemoveItem(item);
+            _shoppingService.RemoveItem(item);
 
             // Assert
-            Assert.DoesNotContain<Item>(shoppingService.Items, x => x == item);
-            Assert.Contains<BoughtItem>(shoppingService.BoughtItems, x => x.Title == item.Title && x.BoughtCount == 2);
+            Assert.DoesNotContain<Item>(_shoppingService.Items, x => x == item);
+            Assert.Contains<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title && x.BoughtCount == 2);
         }
 
         [Fact]
@@ -82,19 +79,18 @@ namespace ShoppingPad.Tests.Services
             var item1 = "item 1";
             var item2 = "item 2";
             var item3 = "item 3";
-            var shoppingService = new ShoppingService(_sqliteConnection);
 
             // Act
-            shoppingService.AddToBoughtItems(new Item(item1));
-            shoppingService.AddToBoughtItems(new Item(item1));
-            shoppingService.AddToBoughtItems(new Item(item2));
-            shoppingService.AddToBoughtItems(new Item(item3));
-            shoppingService.AddToBoughtItems(new Item(item3));
-            shoppingService.AddToBoughtItems(new Item(item3));
+            _shoppingService.AddToBoughtItems(new Item(item1));
+            _shoppingService.AddToBoughtItems(new Item(item1));
+            _shoppingService.AddToBoughtItems(new Item(item2));
+            _shoppingService.AddToBoughtItems(new Item(item3));
+            _shoppingService.AddToBoughtItems(new Item(item3));
+            _shoppingService.AddToBoughtItems(new Item(item3));
 
             // Assert
-            var expected = shoppingService.BoughtItems.OrderByDescending(x => x.BoughtCount);
-            Assert.Equal(expected, shoppingService.BoughtItems);
+            var expected = _shoppingService.BoughtItems.OrderByDescending(x => x.BoughtCount);
+            Assert.Equal(expected, _shoppingService.BoughtItems);
         }
 
         [Fact]
@@ -102,14 +98,13 @@ namespace ShoppingPad.Tests.Services
         {
             // Arrange
             var item1 = "item 1";
-            var shoppingService = new ShoppingService(_sqliteConnection);
-            shoppingService.AddItem(new Item(item1));
+            _shoppingService.AddItem(new Item(item1));
 
             // Act
-            shoppingService.TryAddItemToShoppingList(new Item(item1));
+            _shoppingService.TryAddItemToShoppingList(new Item(item1));
 
             // Assert
-            Assert.Equal(1, shoppingService.Items.Count);
+            Assert.Equal(1, _shoppingService.Items.Count);
         }
 
         [Fact]
@@ -117,13 +112,12 @@ namespace ShoppingPad.Tests.Services
         {
             // Arrange
             var item1 = "item 1";
-            var shoppingService = new ShoppingService(_sqliteConnection);
 
             // Act
-            shoppingService.TryAddItemToShoppingList(new Item(item1));
+            _shoppingService.TryAddItemToShoppingList(new Item(item1));
 
             // Assert
-            Assert.Equal(1, shoppingService.Items.Count);
+            Assert.Equal(1, _shoppingService.Items.Count);
         }
 
         [Fact]
@@ -132,19 +126,18 @@ namespace ShoppingPad.Tests.Services
             // Arrange
             var item1 = "item 1";
             var item2 = "item 2";
-            var shoppingService = new ShoppingService(_sqliteConnection);
-            shoppingService.AddToBoughtItems(new Item(item1));
-            shoppingService.AddToBoughtItems(new Item(item2));
-            shoppingService.AddToBoughtItems(new Item(item2));
+            _shoppingService.AddToBoughtItems(new Item(item1));
+            _shoppingService.AddToBoughtItems(new Item(item2));
+            _shoppingService.AddToBoughtItems(new Item(item2));
 
             // Act
-            shoppingService = new ShoppingService(_sqliteConnection);
+            _shoppingService = new ShoppingService(_dbPath);
 
             // Assert
-            Assert.Equal(item2, shoppingService.BoughtItems.FirstOrDefault()?.Title);
-            Assert.Equal(2, shoppingService.BoughtItems.FirstOrDefault()?.BoughtCount);
-            Assert.Equal(item1, shoppingService.BoughtItems.LastOrDefault()?.Title);
-            Assert.Equal(1, shoppingService.BoughtItems.LastOrDefault()?.BoughtCount);
+            Assert.Equal(item2, _shoppingService.BoughtItems.FirstOrDefault()?.Title);
+            Assert.Equal(2, _shoppingService.BoughtItems.FirstOrDefault()?.BoughtCount);
+            Assert.Equal(item1, _shoppingService.BoughtItems.LastOrDefault()?.Title);
+            Assert.Equal(1, _shoppingService.BoughtItems.LastOrDefault()?.BoughtCount);
         }
     }
 }
