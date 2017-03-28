@@ -15,10 +15,11 @@ namespace ShoppingPad.Tests.ViewModels
     public class ShoppingListViewModelTests
     {
         private ShoppingService _shoppingService;
-        private string _dbPath = Guid.NewGuid().ToString();
+        private string _dbPath;
 
         public ShoppingListViewModelTests()
         {
+            _dbPath = Guid.NewGuid().ToString();
             _shoppingService = new ShoppingService(_dbPath);
         }
 

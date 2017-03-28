@@ -14,15 +14,16 @@ namespace ShoppingPad.Tests.Services
     public class ShoppingServiceTests : IDisposable
     {
         private ShoppingService _shoppingService;
-        private string _dbPath = Guid.NewGuid().ToString();
+        private string _dbPath;
 
         public ShoppingServiceTests()
         {
+            _dbPath = Guid.NewGuid().ToString();
             _shoppingService = new ShoppingService(_dbPath);
         }
 
         public void Dispose()
-        {
+        {            
             File.Delete(_dbPath);
         }
 
