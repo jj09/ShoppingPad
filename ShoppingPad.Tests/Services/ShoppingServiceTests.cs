@@ -28,6 +28,22 @@ namespace ShoppingPad.Tests.Services
         }
 
         [Fact]
+        public void Purchase_Item_From_ShoppingList()
+        {
+            // Arrange
+            var item = new Item("item");
+            _shoppingService.AddItem(item);
+
+            // Act
+            _shoppingService.Purchase(item);
+
+            // Assert
+            Assert.DoesNotContain<Item>(_shoppingService.Items, x => x == item);
+            Assert.Contains<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title);
+            Assert.Contains<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title && x.BoughtCount == 1);
+        }
+
+        [Fact]
         public void Remove_Item_From_ShoppingList()
         {
             // Arrange
@@ -35,12 +51,11 @@ namespace ShoppingPad.Tests.Services
             _shoppingService.AddItem(item);
 
             // Act
-            _shoppingService.RemoveItem(item);
+            _shoppingService.Remove(item);
 
             // Assert
             Assert.DoesNotContain<Item>(_shoppingService.Items, x => x == item);
-            Assert.Contains<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title);
-            Assert.Contains<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title && x.BoughtCount == 1);
+            Assert.DoesNotContain<BoughtItem>(_shoppingService.BoughtItems, x => x.Title == item.Title);
         }
 
         [Fact]
@@ -53,7 +68,7 @@ namespace ShoppingPad.Tests.Services
             _shoppingService.AddToBoughtItems(item);
 
             // Act
-            _shoppingService.RemoveItem(item);
+            _shoppingService.Purchase(item);
 
             // Assert
             Assert.DoesNotContain<Item>(_shoppingService.Items, x => x == item);

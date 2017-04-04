@@ -182,12 +182,14 @@
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="PastPurchasesTableViewController.cs" />
-    <Compile Include="PastPurchasesTableViewController.designer.cs">
+    <Compile Include="TableSources\PastPurchasesTableSource.cs" />
+    <Compile Include="ViewControllers\PastPurchasesTableViewController.cs" />
+    <Compile Include="ViewControllers\PastPurchasesTableViewController.designer.cs">
       <DependentUpon>PastPurchasesTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShoppingListTableViewController.cs" />
-    <Compile Include="ShoppingListTableViewController.designer.cs">
+    <Compile Include="TableSources\ShoppingListTableSource.cs" />
+    <Compile Include="ViewControllers\ShoppingListTableViewController.cs" />
+    <Compile Include="ViewControllers\ShoppingListTableViewController.designer.cs">
       <DependentUpon>ShoppingListTableViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>

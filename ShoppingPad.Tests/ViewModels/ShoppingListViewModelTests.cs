@@ -31,11 +31,28 @@ namespace ShoppingPad.Tests.ViewModels
         }
 
         [Fact]
-        void Should_Be_Able_To_Remove_Item()
+        void Should_Be_Able_To_Purchase_Item()
         {
             // Arrange
             var vm = new ShoppingListViewModel(_shoppingService);
             var item = new Item("some bought item");
+            vm.Add(item);
+
+            // Act
+            vm.Purchase(item);
+
+            // Assert
+            Assert.DoesNotContain<Item>(vm.Items, x => x == item);
+            Assert.DoesNotContain<Item>(_shoppingService.Items, x => x == item);
+            Assert.DoesNotContain<Item>(_shoppingService.BoughtItems, x => x == item);
+        }
+
+        [Fact]
+        void Should_Be_Able_To_Remove_Item()
+        {
+            // Arrange
+            var vm = new ShoppingListViewModel(_shoppingService);
+            var item = new Item("some item to remove");
             vm.Add(item);
 
             // Act
@@ -44,6 +61,7 @@ namespace ShoppingPad.Tests.ViewModels
             // Assert
             Assert.DoesNotContain<Item>(vm.Items, x => x == item);
             Assert.DoesNotContain<Item>(_shoppingService.Items, x => x == item);
+            Assert.DoesNotContain<Item>(_shoppingService.BoughtItems, x => x == item);
         }
     }
 }

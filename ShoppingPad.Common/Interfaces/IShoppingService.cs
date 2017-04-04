@@ -16,8 +16,10 @@ namespace ShoppingPad.Common.Interfaces
 
         void AddItem(Item item);
 
-        void RemoveItem(Item item);
-        
-		void TryAddItemToShoppingList(Item item);
+        void Purchase(Item item);
+
+        void Remove(Item item);
+
+        void TryAddItemToShoppingList(Item item);
     }
 }

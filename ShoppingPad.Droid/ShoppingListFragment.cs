@@ -54,7 +54,7 @@ namespace ShoppingPad.Droid
 
             _shoppingListView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs e)
             {
-                ViewModel.Remove(this.ViewModel.Items.ElementAt(e.Position));
+                ViewModel.Purchase(ViewModel.Items.ElementAt(e.Position));
             };
 
             return view;

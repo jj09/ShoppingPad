@@ -120,10 +120,15 @@ namespace ShoppingPad.Common.Services
             TryAddItemToShoppingList(item);
         }
 
-        public void RemoveItem(Item item)
+        public void Purchase(Item item)
         {
             this.Items.Remove(item);
             this.AddToBoughtItems(item);
+        }
+
+        public void Remove(Item item)
+        {
+            this.Items.Remove(item);
         }
 
         public void TryAddItemToShoppingList(Item item)

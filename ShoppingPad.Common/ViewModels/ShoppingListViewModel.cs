@@ -17,17 +17,22 @@ namespace ShoppingPad.Common.ViewModels
 
         public ShoppingListViewModel(IShoppingService shoppingService)
         {
-            this._shoppingService = shoppingService;
+            _shoppingService = shoppingService;
         }
 
         public void Add(Item item)
         {
-            this._shoppingService.AddItem(item);
+            _shoppingService.AddItem(item);
+        }
+
+        public void Purchase(Item item)
+        {
+            _shoppingService.Purchase(item);
         }
 
         public void Remove(Item item)
         {
-            this._shoppingService.RemoveItem(item);
+            _shoppingService.Remove(item);
         }
     }
 }
