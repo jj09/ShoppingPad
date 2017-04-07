@@ -6,12 +6,16 @@ using ShoppingPad.Common.Helpers;
 using System.Linq;
 using ShoppingPad.Common.ViewModels;
 using Autofac;
+using System.Threading;
+using ShoppingPad.Common.Models;
 
 namespace ShoppingPad.iOS
 {
     public class ShoppingListTableSource : UITableViewSource 
 	{
         private ShoppingListViewModel _viewModel;
+
+        private Item _deletingItem;
 		
 		public ShoppingListTableSource ()
 		{
@@ -29,10 +33,21 @@ namespace ShoppingPad.iOS
 
             var item = _viewModel.Items.ElementAt(indexPath.Row);
 
-            cell.UpdateCell(item, _viewModel, tableView, indexPath);
+            var isChecked = item == _deletingItem;
+            cell.UpdateCell(item, isChecked);
 
 			return cell;
 		}
+
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            var item = _viewModel.Items.ElementAt(indexPath.Row);
+            _deletingItem = item;
+            tableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Automatic);
+            _viewModel.Purchase(item);
+            tableView.DeleteRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+            _deletingItem = null;
+        }
 
         // deleting from the list: https://developer.xamarin.com/guides/ios/user_interface/tables/part_4_-_editing/#Swipe_to_Delete
         public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)

@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -16,7 +16,7 @@ namespace ShoppingPad.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton _checkboxButton { get; set; }
+        UIKit.UIImageView _checkboxImageView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -24,9 +24,9 @@ namespace ShoppingPad.iOS
 
         void ReleaseDesignerOutlets ()
         {
-            if (_checkboxButton != null) {
-                _checkboxButton.Dispose ();
-                _checkboxButton = null;
+            if (_checkboxImageView != null) {
+                _checkboxImageView.Dispose ();
+                _checkboxImageView = null;
             }
 
             if (_itemTitleLabel != null) {

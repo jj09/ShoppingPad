@@ -11,24 +11,18 @@ namespace ShoppingPad.iOS
         public static readonly NSString Key = new NSString("ShoppingListTableViewCell");
         public static readonly UINib Nib;
 
-        public ShoppingListTableViewCell (IntPtr handle) : base (handle)
+
+        public ShoppingListTableViewCell(IntPtr handle) : base(handle)
         {
         }
 
-        public void UpdateCell(Item item, ShoppingListViewModel viewModel, UITableView tableView, NSIndexPath indexPath)
+        public void UpdateCell(Item item, bool isChecked)
         {
             _itemTitleLabel.Text = item.Title;
 
-            _checkboxButton.SetImage(UIImage.FromFile("Icons/checkbox-unchecked.png"), UIControlState.Normal);
-
-            _checkboxButton.TouchUpInside += (s, e) =>
-            {
-                _checkboxButton.SetImage(UIImage.FromFile("Icons/checkbox-checked.png"), UIControlState.Normal);
-                tableView.ReloadData();
-                System.Threading.Thread.Sleep(1500);
-                viewModel.Purchase(item);
-                tableView.DeleteRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
-            };
+            var path = $"Icons/checkbox-{(isChecked ? "" : "un")}checked.png";
+            _checkboxImageView.Image = UIImage.FromFile(path);
+            _checkboxImageView.TintColor = UIColor.Black;
         }
     }
 }
