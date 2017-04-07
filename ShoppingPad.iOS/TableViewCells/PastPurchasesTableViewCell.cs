@@ -18,22 +18,25 @@ namespace ShoppingPad.iOS
         {
             _countLabel.Text = item.BoughtCount.ToString();
 
+            var addedToShoppingListString = " (added to shopping list)";
+
+            var titleLabel = new NSMutableAttributedString($"{item.Title}{(isOnShoppingList ? addedToShoppingListString : "")}");
+            titleLabel.SetAttributes(new UIStringAttributes
+            {
+                ForegroundColor = UIColor.Black,
+                Font = UIFont.SystemFontOfSize(18)
+            }, new NSRange(0, item.Title.Length));
+
             if (isOnShoppingList)
             {
-                _titleLabel.Text = item.Title + " (added to shopping list)";
+                titleLabel.SetAttributes(new UIStringAttributes
+                {
+                    ForegroundColor = UIColor.Gray,
+                    Font = UIFont.SystemFontOfSize(13)
+                }, new NSRange(item.Title.Length, addedToShoppingListString.Length));
             }
-            else
-            {
-                _titleLabel.Text = item.Title;
 
-            }
-
-            //var filterHeaderLabel = new NSMutableAttributedString($"{item.Title}{(string.IsNullOrEmpty(filterValue) ? "" : $": {filterValue}")}");
-            //filterHeaderLabel.SetAttributes(new UIStringAttributes
-            //{
-            //    ForegroundColor = UIColor.Black,
-            //    Font = UIFont.SystemFontOfSize(SizeHelpers.H1SystemFontSize)
-            //}, new NSRange(0, filterName.Length));
+            _titleLabel.AttributedText = titleLabel;
         }
     }
 }

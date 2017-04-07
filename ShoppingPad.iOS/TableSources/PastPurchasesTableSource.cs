@@ -5,6 +5,7 @@ using ShoppingPad.Common.Helpers;
 using ShoppingPad.Common.ViewModels;
 using UIKit;
 using Autofac;
+using ShoppingPad.Common.Interfaces;
 
 namespace ShoppingPad.iOS
 {
@@ -27,8 +28,9 @@ namespace ShoppingPad.iOS
             var cell = (PastPurchasesTableViewCell)tableView.DequeueReusableCell(PastPurchasesTableViewCell.Key);
 
             var item = ViewModel.Items.ElementAt(indexPath.Row);
+            var isOnShoppingList = ServiceRegistrar.Container.Resolve<IShoppingService>().Items.FirstOrDefault(x => x.Title == item.Title) != null;
 
-            cell.UpdateCell(item, true);
+            cell.UpdateCell(item, isOnShoppingList);
 
             return cell;
         }
@@ -36,6 +38,7 @@ namespace ShoppingPad.iOS
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             ViewModel.CopyItemToShoppingList(ViewModel.Items.ElementAt(indexPath.Row));
+            tableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
             tableView.DeselectRow(indexPath, true);
         }
     }
