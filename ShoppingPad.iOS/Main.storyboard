@@ -111,13 +111,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="228">
+                            <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="228" customClass="PastPurchasesTableViewCell" reuseIdentifier="PastPurchasesTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="228" id="229">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="838" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="15" y="11.5" width="520" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="841" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="555" y="11.5" width="30" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <constraints>
+                                                <constraint id="844" firstItem="841" firstAttribute="width" constant="30"/>
+                                            </constraints>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="839" firstItem="838" firstAttribute="centerY" secondItem="229" secondAttribute="centerY"/>
+                                        <constraint id="840" firstItem="838" firstAttribute="leading" secondItem="229" secondAttribute="leading" constant="15"/>
+                                        <constraint id="842" firstItem="841" firstAttribute="centerY" secondItem="229" secondAttribute="centerY"/>
+                                        <constraint id="843" firstItem="229" firstAttribute="trailing" secondItem="841" secondAttribute="trailing" constant="15"/>
+                                        <constraint id="845" firstItem="841" firstAttribute="leading" secondItem="838" secondAttribute="trailing" constant="20"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="_titleLabel" destination="838" id="name-outlet-838"/>
+                                    <outlet property="_countLabel" destination="841" id="name-outlet-841"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -11,7 +11,6 @@ namespace ShoppingPad.iOS
     public class PastPurchasesTableSource : UITableViewSource
     {
         PastPurchasesViewModel ViewModel;
-        string CellIdentifier = "TableCell";
 
         public PastPurchasesTableSource()
         {
@@ -25,16 +24,11 @@ namespace ShoppingPad.iOS
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            UITableViewCell cell = tableView.DequeueReusableCell(CellIdentifier);
+            var cell = (PastPurchasesTableViewCell)tableView.DequeueReusableCell(PastPurchasesTableViewCell.Key);
+
             var item = ViewModel.Items.ElementAt(indexPath.Row);
 
-            //---- if there are no cells to reuse, create a new one
-            if (cell == null)
-            {
-                cell = new UITableViewCell(UITableViewCellStyle.Default, CellIdentifier);
-            }
-
-            cell.TextLabel.Text = $"({item.BoughtCount}) {item.Title}";
+            cell.UpdateCell(item, true);
 
             return cell;
         }

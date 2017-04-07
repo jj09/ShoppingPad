@@ -14,7 +14,6 @@ namespace ShoppingPad.iOS
         {
             base.ViewDidLoad();
 
-            TableView = new UITableView();
             TableView.Source = new PastPurchasesTableSource();
         }
 

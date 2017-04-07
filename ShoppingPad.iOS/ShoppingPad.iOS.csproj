@@ -196,6 +196,10 @@
     <Compile Include="ViewControllers\ShoppingListTableViewController.designer.cs">
       <DependentUpon>ShoppingListTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableViewCells\PastPurchasesTableViewCell.cs" />
+    <Compile Include="TableViewCells\PastPurchasesTableViewCell.designer.cs">
+      <DependentUpon>PastPurchasesTableViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
