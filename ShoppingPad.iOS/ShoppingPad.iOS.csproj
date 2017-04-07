@@ -182,6 +182,10 @@
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="TableViewCells\ShoppingListTableViewCell.cs" />
+    <Compile Include="TableViewCells\ShoppingListTableViewCell.designer.cs">
+      <DependentUpon>ShoppingListTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="TableSources\PastPurchasesTableSource.cs" />
     <Compile Include="ViewControllers\PastPurchasesTableViewController.cs" />
     <Compile Include="ViewControllers\PastPurchasesTableViewController.designer.cs">
@@ -265,6 +269,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Icons\ListIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Icons\checkbox-unchecked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Icons\checkbox-checked.png" />
   </ItemGroup>
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

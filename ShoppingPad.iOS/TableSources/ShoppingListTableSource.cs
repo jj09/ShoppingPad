@@ -11,13 +11,11 @@ namespace ShoppingPad.iOS
 {
     public class ShoppingListTableSource : UITableViewSource 
 	{
-        const string CellIdentifier = "TableCell";
-
         private ShoppingListViewModel _viewModel;
 		
 		public ShoppingListTableSource ()
 		{
-			_viewModel = ServiceRegistrar.Container.Resolve<ShoppingListViewModel>();
+            _viewModel = ServiceRegistrar.Container.Resolve<ShoppingListViewModel>();
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
@@ -27,24 +25,13 @@ namespace ShoppingPad.iOS
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
-			UITableViewCell cell = tableView.DequeueReusableCell (CellIdentifier);
-			var item = _viewModel.Items.ElementAt(indexPath.Row);
+			var cell = (ShoppingListTableViewCell)tableView.DequeueReusableCell(ShoppingListTableViewCell.Key);
 
-			//---- if there are no cells to reuse, create a new one
-			if (cell == null)
-			{
-				cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier);
-			}
+            var item = _viewModel.Items.ElementAt(indexPath.Row);
 
-			cell.TextLabel.Text = item.Title;
+            cell.UpdateCell(item, _viewModel, tableView, indexPath);
 
 			return cell;
-		}
-
-		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
-		{
-			_viewModel.Purchase(_viewModel.Items.ElementAt(indexPath.Row));
-			tableView.ReloadData();
 		}
 
         // deleting from the list: https://developer.xamarin.com/guides/ios/user_interface/tables/part_4_-_editing/#Swipe_to_Delete

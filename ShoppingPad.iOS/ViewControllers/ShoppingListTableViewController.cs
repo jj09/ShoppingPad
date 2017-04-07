@@ -18,7 +18,6 @@ namespace ShoppingPad.iOS
 		{
 			base.ViewDidLoad();
 
-            TableView = new UITableView(View.Bounds);
             TableView.Source = new ShoppingListTableSource();
 
             _addButton.Clicked += (s, e) =>
