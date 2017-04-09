@@ -2,7 +2,7 @@
 
 ![Shopping Pad](ShoppingPad.png)
 
-Shopping Pad is a smart shopping list that allows you not only to create a shopping list, but it also remembers items that you have purchased in the past. This helps to create shopping list for your next grocery store trip, by suggesting items, starting from these that you purchase the most.
+Shopping Pad is an ultimate Shopping List app that allows you to create shopping list with less clicks than any other shopping list app! It remembers items that you have purchased in the past and how often you have purchased them. This allows you to create shopping list for your next grocery trip blazingly fast.
 
 <a href="https://itunes.apple.com/us/app/shopping-pad/id1099704934"><img src="http://drexel.edu/~/media/Images/alumni/Social%20media%20icons/App-Store-Icon.ashx?la=en&hash=0410913BCDF4491F0696B07A5D5123F6EC77971E" width="200px" /></a>
 
@@ -21,7 +21,7 @@ Shopping Pad is a smart shopping list that allows you not only to create a shopp
 	* [x] add persistance (SQLite)
     
 * v1.2
-    * [ ] removing items from list
+    * [x] removing items from list
 
 * v2
 	* [ ] sync data with cloud (fb/tw/G+/gh auth)
