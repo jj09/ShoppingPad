@@ -7,9 +7,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>jj09.shoppingpad</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -33,7 +33,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>CFBundleDisplayName</key>
-	<string>Shopping Pad</string>
+	<string>ShoppingPad.iOS</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon@2x.png</string>
