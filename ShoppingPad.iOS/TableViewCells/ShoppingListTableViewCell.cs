@@ -3,6 +3,8 @@ using ShoppingPad.Common.Models;
 using ShoppingPad.Common.ViewModels;
 using System;
 using UIKit;
+using CoreImage;
+using CoreGraphics;
 
 namespace ShoppingPad.iOS
 {
@@ -22,7 +24,7 @@ namespace ShoppingPad.iOS
 
             var path = $"Icons/checkbox-{(isChecked ? "" : "un")}checked.png";
             _checkboxImageView.Image = UIImage.FromFile(path);
-            _checkboxImageView.TintColor = UIColor.Black;
-        }
+            _checkboxImageView.Alpha = isChecked ? 1f : 0.4f;
+        } 
     }
 }
