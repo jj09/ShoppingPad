@@ -11,8 +11,8 @@ Shopping Pad is an ultimate Shopping List app that allows you to create shopping
 <a href="https://www.microsoft.com/en-us/store/apps/shopping-pad/9nblggh4lzmw"><img src="http://www.music-maker.com/fileadmin/MumaCore/images/cta/btn-windows-store-en.png" width="200px" /></a>
 
 <a href="http://onelink.to/4wax6x"><img src="ShoppingPadQrCode.png"></a>
-	
-###Roadmap:
+
+### Roadmap:
 * v1
 	* [x] add/remove items from shopping list
 	* [x] keep track of the top bought items
